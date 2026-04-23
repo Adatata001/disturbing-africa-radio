@@ -1,0 +1,90 @@
+import * as React from "react";
+
+export const STREAM_URL =
+  "https://stream.zeno.fm/0r0xa792kwzuv"; // placeholder — swap with your real Disturbing Africa Radio stream URL
+
+type PlayerCtx = {
+  isPlaying: boolean;
+  isLoading: boolean;
+  volume: number;
+  toggle: () => void;
+  setVolume: (v: number) => void;
+};
+
+const Ctx = React.createContext<PlayerCtx | null>(null);
+
+export function PlayerProvider({ children }: { children: React.ReactNode }) {
+  const audioRef = React.useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [volume, setVolumeState] = React.useState(0.8);
+
+  React.useEffect(() => {
+    const audio = new Audio();
+    audio.preload = "none";
+    audio.crossOrigin = "anonymous";
+    audio.volume = volume;
+    audioRef.current = audio;
+
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+    const onWaiting = () => setIsLoading(true);
+    const onPlaying = () => setIsLoading(false);
+    const onError = () => {
+      setIsLoading(false);
+      setIsPlaying(false);
+    };
+
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+    audio.addEventListener("waiting", onWaiting);
+    audio.addEventListener("playing", onPlaying);
+    audio.addEventListener("error", onError);
+
+    return () => {
+      audio.pause();
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("waiting", onWaiting);
+      audio.removeEventListener("playing", onPlaying);
+      audio.removeEventListener("error", onError);
+      audioRef.current = null;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const toggle = React.useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audio.paused) {
+      // reset src on each play to avoid stale buffer on live stream
+      audio.src = STREAM_URL + "?t=" + Date.now();
+      setIsLoading(true);
+      audio.play().catch(() => {
+        setIsLoading(false);
+        setIsPlaying(false);
+      });
+    } else {
+      audio.pause();
+      audio.removeAttribute("src");
+      audio.load();
+    }
+  }, []);
+
+  const setVolume = React.useCallback((v: number) => {
+    setVolumeState(v);
+    if (audioRef.current) audioRef.current.volume = v;
+  }, []);
+
+  return (
+    <Ctx.Provider value={{ isPlaying, isLoading, volume, toggle, setVolume }}>
+      {children}
+    </Ctx.Provider>
+  );
+}
+
+export function usePlayer() {
+  const v = React.useContext(Ctx);
+  if (!v) throw new Error("usePlayer must be used within PlayerProvider");
+  return v;
+}
