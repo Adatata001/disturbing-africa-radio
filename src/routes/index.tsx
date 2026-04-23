@@ -1,26 +1,304 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  ArrowRight,
+  HeartHandshake,
+  MessageCircle,
+  Sparkles,
+} from "lucide-react";
+import heroDj from "@/assets/hero-dj.jpg";
+import showMic from "@/assets/show-mic.jpg";
+import showVocal from "@/assets/show-vocal.jpg";
+import showVinyl from "@/assets/show-vinyl.jpg";
+import community from "@/assets/community.jpg";
+import { EqBars } from "@/components/eq-bars";
+import { usePlayer } from "@/components/player-context";
+import { SOCIALS } from "@/components/site-footer";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Disturbing Africa Radio — Listen Live | Afro Fusion" },
+      {
+        name: "description",
+        content:
+          "Tune into Disturbing Africa Radio — bold curations of African mainstream & underground sounds. Streaming live daily 5AM – 12AM.",
+      },
+      { property: "og:title", content: "Disturbing Africa Radio — Listen Live" },
+      {
+        property: "og:description",
+        content: "Afro Fusion radio. Bold, underground, unfiltered. Listen live now.",
+      },
+      { property: "og:image", content: heroDj },
+      { name: "twitter:image", content: heroDj },
+    ],
+  }),
+  component: HomePage,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+const FEATURED_SHOWS = [
+  {
+    name: "Underground Frequencies",
+    host: "with DJ Adisa",
+    schedule: "Mon – Fri · 8 PM",
+    tag: "Afro House",
+    image: showMic,
+  },
+  {
+    name: "Voices Of The Continent",
+    host: "with Amara K.",
+    schedule: "Wed · 6 PM",
+    tag: "Talk + Live",
+    image: showVocal,
+  },
+  {
+    name: "Crate Diggers",
+    host: "with Selecta Bem",
+    schedule: "Sat · 10 PM",
+    tag: "Vinyl Sets",
+    image: showVinyl,
+  },
+];
+
+const VALUES = [
+  "Bold Curations — No Safe Playlists",
+  "African Sound Diversity",
+  "Cultural Integrity",
+  "Platform For Emerging Talent",
+  "Disruptive Programming",
+  "Global Accessibility",
+  "Authentic Conversations",
+  "Consistency & Quality Control",
+  "Community-Driven Growth",
+  "Independence From Industry Politics",
+];
+
+function HomePage() {
+  const { isPlaying, toggle } = usePlayer();
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div>
+      {/* HERO */}
+      <section className="relative overflow-hidden border-b border-border">
+        <div className="absolute inset-0">
+          <img
+            src={heroDj}
+            alt="DJ at the decks lit by green and yellow neon"
+            width={1600}
+            height={1200}
+            className="h-full w-full object-cover opacity-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
+        </div>
+
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-20 md:py-28 lg:grid-cols-12">
+          <div className="lg:col-span-8">
+            <span className="inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-secondary">
+              <Sparkles className="h-3 w-3" />
+              Afro Fusion · Mainstream + Underground
+            </span>
+            <h1 className="display mt-5 text-5xl font-black leading-[0.95] text-foreground sm:text-7xl lg:text-8xl">
+              Welcome to{" "}
+              <span className="text-gradient-brand">Disturbing</span>
+              <br />
+              Africa Radio
+            </h1>
+            <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
+              The freshest cuts from Africa's mainstream and underground — broadcasting bold,
+              unfiltered sound from Kaduna to the diaspora.
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <button
+                onClick={toggle}
+                className="inline-flex items-center gap-3 rounded-md bg-primary px-6 py-3.5 text-sm font-black uppercase tracking-wider text-primary-foreground shadow-[var(--shadow-glow)] transition-transform hover:scale-[1.02]"
+              >
+                {isPlaying ? "Now Streaming" : "Listen Live"}
+                <EqBars active={isPlaying} className="h-4" />
+              </button>
+              <Link
+                to="/shows"
+                className="inline-flex items-center gap-2 rounded-md border border-border bg-background/40 px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-foreground hover:border-primary hover:text-primary"
+              >
+                Explore Shows <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="hidden self-end lg:col-span-4 lg:block">
+            <div className="rounded-xl border border-border bg-card/60 p-6 backdrop-blur">
+              <div className="text-[11px] font-bold uppercase tracking-widest text-primary">
+                On Air Now
+              </div>
+              <div className="mt-2 display text-2xl font-black">Underground Frequencies</div>
+              <div className="text-sm text-muted-foreground">with DJ Adisa</div>
+              <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
+                <span className="text-xs text-muted-foreground">Afro House · Live</span>
+                <EqBars active={isPlaying} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MISSION STRIP */}
+      <section className="border-b border-border bg-primary text-primary-foreground">
+        <div className="mx-auto max-w-7xl overflow-hidden px-4 py-6">
+          <div className="flex items-center gap-8 whitespace-nowrap text-2xl font-black uppercase tracking-tight sm:text-3xl">
+            <span>★ Spread the Influence of African Underground Genres</span>
+            <span className="opacity-50">★ Bold Curations</span>
+            <span className="opacity-50">★ No Safe Playlists</span>
+            <span className="opacity-50">★ Cultural Integrity</span>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED SHOWS */}
+      <section className="mx-auto max-w-7xl px-4 py-20">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <div className="text-xs font-bold uppercase tracking-widest text-secondary">
+              Featured
+            </div>
+            <h2 className="display mt-2 text-4xl font-black sm:text-5xl">Shows on rotation</h2>
+          </div>
+          <Link
+            to="/shows"
+            className="hidden items-center gap-1 text-sm font-bold uppercase tracking-wider text-primary hover:underline sm:inline-flex"
+          >
+            All shows <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {FEATURED_SHOWS.map((show) => (
+            <article
+              key={show.name}
+              className="group overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/60"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={show.image}
+                  alt={show.name}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <span className="absolute left-3 top-3 rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary-foreground">
+                  {show.tag}
+                </span>
+              </div>
+              <div className="p-5">
+                <div className="text-xs font-bold uppercase tracking-widest text-secondary">
+                  {show.schedule}
+                </div>
+                <h3 className="display mt-2 text-2xl font-black">{show.name}</h3>
+                <div className="mt-1 text-sm text-muted-foreground">{show.host}</div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* CORE VALUES */}
+      <section className="border-y border-border bg-card/40">
+        <div className="mx-auto max-w-7xl px-4 py-20">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <div className="text-xs font-bold uppercase tracking-widest text-secondary">
+                What we stand for
+              </div>
+              <h2 className="display mt-2 text-4xl font-black leading-[0.95] sm:text-5xl">
+                Ten rules.<br />
+                <span className="text-primary">No compromises.</span>
+              </h2>
+              <p className="mt-4 max-w-md text-sm text-muted-foreground">
+                Our core values keep the signal pure — from selection to broadcast.
+              </p>
+            </div>
+            <ul className="grid gap-3 sm:grid-cols-2 lg:col-span-8">
+              {VALUES.map((v, i) => (
+                <li
+                  key={v}
+                  className="flex items-start gap-3 rounded-lg border border-border bg-background/40 p-4 transition-colors hover:border-primary/40"
+                >
+                  <span className="display flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary text-sm font-black text-primary-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="pt-1.5 text-sm font-semibold text-foreground">{v}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* EDITORIAL BLOCK */}
+      <section className="mx-auto max-w-7xl px-4 py-20">
+        <div className="grid items-center gap-10 lg:grid-cols-2">
+          <div className="relative overflow-hidden rounded-xl border border-border">
+            <img
+              src={community}
+              alt="Crowd at an underground music event with green and yellow stage lights"
+              loading="lazy"
+              width={1600}
+              height={1000}
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div>
+            <div className="text-xs font-bold uppercase tracking-widest text-secondary">
+              Our vision
+            </div>
+            <h2 className="display mt-2 text-4xl font-black leading-[0.95] sm:text-6xl">
+              United voices.<br />
+              <span className="text-gradient-brand">Limitless stories.</span>
+            </h2>
+            <p className="mt-6 text-base text-muted-foreground">
+              We position African music as a permanent force in global pop culture — building a
+              platform for emerging talent, authentic conversations, and disruptive programming.
+            </p>
+            <Link
+              to="/about"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary hover:underline"
+            >
+              Read our story <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* COMMUNITY CTA */}
+      <section className="mx-auto max-w-7xl px-4 pb-10">
+        <div className="overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/15 via-background to-secondary/15 p-8 sm:p-12">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+            <div className="max-w-xl">
+              <div className="text-xs font-bold uppercase tracking-widest text-secondary">
+                Join the movement
+              </div>
+              <h2 className="display mt-2 text-3xl font-black sm:text-4xl">
+                Support the signal. Power the sound.
+              </h2>
+              <p className="mt-3 text-sm text-muted-foreground">
+                Join our WhatsApp community, drop into the chat, or tip the studio to keep
+                independent African radio on air.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={SOCIALS.whatsapp}
+                className="inline-flex items-center gap-2 rounded-md bg-secondary px-5 py-3 text-sm font-bold uppercase tracking-wider text-secondary-foreground"
+              >
+                <MessageCircle className="h-4 w-4" /> WhatsApp
+              </a>
+              <a
+                href={SOCIALS.tipjar}
+                className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-bold uppercase tracking-wider text-primary-foreground"
+              >
+                <HeartHandshake className="h-4 w-4" /> Tip the Studio
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
 }
