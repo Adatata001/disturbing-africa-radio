@@ -42,6 +42,13 @@ export const Route = createRootRoute({
       { name: "author", content: "Disturbing Africa Radio" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Disturbing Africa Radio — Afro Fusion Live" },
+      { name: "twitter:title", content: "Disturbing Africa Radio — Afro Fusion Live" },
+      { name: "description", content: "Afro Fusion radio, African music, online radio Nigeria, underground African music, live radio streaming, Afrobeat radio, African diaspora music, internet radio" },
+      { property: "og:description", content: "Afro Fusion radio, African music, online radio Nigeria, underground African music, live radio streaming, Afrobeat radio, African diaspora music, internet radio" },
+      { name: "twitter:description", content: "Afro Fusion radio, African music, online radio Nigeria, underground African music, live radio streaming, Afrobeat radio, African diaspora music, internet radio" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/b2f3f28d-bd41-4222-ba58-baf6945f231e" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/b2f3f28d-bd41-4222-ba58-baf6945f231e" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
