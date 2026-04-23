@@ -13,7 +13,14 @@ import community from "@/assets/community.jpg";
 import { EqBars } from "@/components/eq-bars";
 import { usePlayer } from "@/components/player-context";
 import { SOCIALS } from "@/components/site-footer";
-import { SITE_URL, SOCIAL_IMAGE_ALT, SOCIAL_IMAGE_URL } from "@/lib/site-meta";
+import {
+  SITE_URL,
+  SOCIAL_IMAGE_ALT,
+  SOCIAL_IMAGE_HEIGHT,
+  SOCIAL_IMAGE_TYPE,
+  SOCIAL_IMAGE_URL,
+  SOCIAL_IMAGE_WIDTH,
+} from "@/lib/site-meta";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -36,6 +43,10 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:url", content: SITE_URL },
       { property: "og:image", content: SOCIAL_IMAGE_URL },
+      { property: "og:image:secure_url", content: SOCIAL_IMAGE_URL },
+      { property: "og:image:type", content: SOCIAL_IMAGE_TYPE },
+      { property: "og:image:width", content: SOCIAL_IMAGE_WIDTH },
+      { property: "og:image:height", content: SOCIAL_IMAGE_HEIGHT },
       { property: "og:image:alt", content: SOCIAL_IMAGE_ALT },
       { name: "twitter:image", content: SOCIAL_IMAGE_URL },
       { name: "twitter:image:alt", content: SOCIAL_IMAGE_ALT },

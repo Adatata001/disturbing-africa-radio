@@ -5,7 +5,14 @@ import { PlayerProvider } from "@/components/player-context";
 import { LivePlayerBar } from "@/components/live-player";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { SITE_URL, SOCIAL_IMAGE_ALT, SOCIAL_IMAGE_URL } from "@/lib/site-meta";
+import {
+  SITE_URL,
+  SOCIAL_IMAGE_ALT,
+  SOCIAL_IMAGE_HEIGHT,
+  SOCIAL_IMAGE_TYPE,
+  SOCIAL_IMAGE_URL,
+  SOCIAL_IMAGE_WIDTH,
+} from "@/lib/site-meta";
 
 function NotFoundComponent() {
   return (
@@ -50,6 +57,10 @@ export const Route = createRootRoute({
         content: "Afro Fusion radio. Bold, underground, unfiltered. Listen live now.",
       },
       { property: "og:image", content: SOCIAL_IMAGE_URL },
+      { property: "og:image:secure_url", content: SOCIAL_IMAGE_URL },
+      { property: "og:image:type", content: SOCIAL_IMAGE_TYPE },
+      { property: "og:image:width", content: SOCIAL_IMAGE_WIDTH },
+      { property: "og:image:height", content: SOCIAL_IMAGE_HEIGHT },
       { property: "og:image:alt", content: SOCIAL_IMAGE_ALT },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Disturbing Africa Radio - Afro Fusion Live" },
