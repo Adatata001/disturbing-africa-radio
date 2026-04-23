@@ -13,23 +13,32 @@ import community from "@/assets/community.jpg";
 import { EqBars } from "@/components/eq-bars";
 import { usePlayer } from "@/components/player-context";
 import { SOCIALS } from "@/components/site-footer";
+import { SITE_URL, SOCIAL_IMAGE_ALT, SOCIAL_IMAGE_URL } from "@/lib/site-meta";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Disturbing Africa Radio — Listen Live | Afro Fusion" },
+      { title: "Disturbing Africa Radio - Listen Live | Afro Fusion" },
       {
         name: "description",
         content:
-          "Tune into Disturbing Africa Radio — bold curations of African mainstream & underground sounds. Streaming live daily 5AM – 12AM.",
+          "Tune into Disturbing Africa Radio - bold curations of African mainstream and underground sounds. Streaming live daily 5AM-12AM.",
       },
-      { property: "og:title", content: "Disturbing Africa Radio — Listen Live" },
+      { property: "og:title", content: "Disturbing Africa Radio - Listen Live" },
       {
         property: "og:description",
         content: "Afro Fusion radio. Bold, underground, unfiltered. Listen live now.",
       },
-      { property: "og:image", content: heroDj },
-      { name: "twitter:image", content: heroDj },
+      { name: "twitter:title", content: "Disturbing Africa Radio - Listen Live" },
+      {
+        name: "twitter:description",
+        content: "Afro Fusion radio. Bold, underground, unfiltered. Listen live now.",
+      },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: SOCIAL_IMAGE_URL },
+      { property: "og:image:alt", content: SOCIAL_IMAGE_ALT },
+      { name: "twitter:image", content: SOCIAL_IMAGE_URL },
+      { name: "twitter:image:alt", content: SOCIAL_IMAGE_ALT },
     ],
   }),
   component: HomePage,
@@ -39,28 +48,28 @@ const FEATURED_SHOWS = [
   {
     name: "Underground Frequencies",
     host: "with DJ Adisa",
-    schedule: "Mon – Fri · 8 PM",
+    schedule: "Mon â€“ Fri Â· 8 PM",
     tag: "Afro House",
     image: showMic,
   },
   {
     name: "Voices Of The Continent",
     host: "with Amara K.",
-    schedule: "Wed · 6 PM",
+    schedule: "Wed Â· 6 PM",
     tag: "Talk + Live",
     image: showVocal,
   },
   {
     name: "Crate Diggers",
     host: "with Selecta Bem",
-    schedule: "Sat · 10 PM",
+    schedule: "Sat Â· 10 PM",
     tag: "Vinyl Sets",
     image: showVinyl,
   },
 ];
 
 const VALUES = [
-  "Bold Curations — No Safe Playlists",
+  "Bold Curations â€” No Safe Playlists",
   "African Sound Diversity",
   "Cultural Integrity",
   "Platform For Emerging Talent",
@@ -94,7 +103,7 @@ function HomePage() {
           <div className="lg:col-span-8">
             <span className="inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-secondary">
               <Sparkles className="h-3 w-3" />
-              Afro Fusion · Mainstream + Underground
+              Afro Fusion Â· Mainstream + Underground
             </span>
             <h1 className="display mt-5 text-5xl font-black leading-[0.95] text-foreground sm:text-7xl lg:text-8xl">
               Welcome to{" "}
@@ -103,7 +112,7 @@ function HomePage() {
               Africa Radio
             </h1>
             <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
-              The freshest cuts from Africa's mainstream and underground — broadcasting bold,
+              The freshest cuts from Africa's mainstream and underground â€” broadcasting bold,
               unfiltered sound from Kaduna to the diaspora.
             </p>
 
@@ -132,7 +141,7 @@ function HomePage() {
               <div className="mt-2 display text-2xl font-black">Underground Frequencies</div>
               <div className="text-sm text-muted-foreground">with DJ Adisa</div>
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
-                <span className="text-xs text-muted-foreground">Afro House · Live</span>
+                <span className="text-xs text-muted-foreground">Afro House Â· Live</span>
                 <EqBars active={isPlaying} />
               </div>
             </div>
@@ -144,10 +153,10 @@ function HomePage() {
       <section className="border-b border-border bg-primary text-primary-foreground">
         <div className="mx-auto max-w-7xl overflow-hidden px-4 py-6">
           <div className="flex items-center gap-8 whitespace-nowrap text-2xl font-black uppercase tracking-tight sm:text-3xl">
-            <span>★ Spread the Influence of African Underground Genres</span>
-            <span className="opacity-50">★ Bold Curations</span>
-            <span className="opacity-50">★ No Safe Playlists</span>
-            <span className="opacity-50">★ Cultural Integrity</span>
+            <span>â˜… Spread the Influence of African Underground Genres</span>
+            <span className="opacity-50">â˜… Bold Curations</span>
+            <span className="opacity-50">â˜… No Safe Playlists</span>
+            <span className="opacity-50">â˜… Cultural Integrity</span>
           </div>
         </div>
       </section>
@@ -211,7 +220,7 @@ function HomePage() {
                 <span className="text-primary">No compromises.</span>
               </h2>
               <p className="mt-4 max-w-md text-sm text-muted-foreground">
-                Our core values keep the signal pure — from selection to broadcast.
+                Our core values keep the signal pure â€” from selection to broadcast.
               </p>
             </div>
             <ul className="grid gap-3 sm:grid-cols-2 lg:col-span-8">
@@ -253,7 +262,7 @@ function HomePage() {
               <span className="text-gradient-brand">Limitless stories.</span>
             </h2>
             <p className="mt-6 text-base text-muted-foreground">
-              We position African music as a permanent force in global pop culture — building a
+              We position African music as a permanent force in global pop culture â€” building a
               platform for emerging talent, authentic conversations, and disruptive programming.
             </p>
             <Link

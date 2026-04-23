@@ -5,6 +5,7 @@ import { PlayerProvider } from "@/components/player-context";
 import { LivePlayerBar } from "@/components/live-player";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { SITE_URL, SOCIAL_IMAGE_ALT, SOCIAL_IMAGE_URL } from "@/lib/site-meta";
 
 function NotFoundComponent() {
   return (
@@ -33,25 +34,35 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Disturbing Africa Radio — Afro Fusion Live" },
+      { title: "Disturbing Africa Radio - Afro Fusion Live" },
       {
         name: "description",
         content:
-          "Disturbing Africa Radio — Afro Fusion broadcasting the freshest mainstream & underground sounds from Africa and the diaspora.",
+          "Disturbing Africa Radio - Afro Fusion broadcasting the freshest mainstream and underground sounds from Africa and the diaspora.",
       },
       { name: "author", content: "Disturbing Africa Radio" },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Disturbing Africa Radio" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:title", content: "Disturbing Africa Radio - Afro Fusion Live" },
+      {
+        property: "og:description",
+        content: "Afro Fusion radio. Bold, underground, unfiltered. Listen live now.",
+      },
+      { property: "og:image", content: SOCIAL_IMAGE_URL },
+      { property: "og:image:alt", content: SOCIAL_IMAGE_ALT },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Disturbing Africa Radio — Afro Fusion Live" },
-      { name: "twitter:title", content: "Disturbing Africa Radio — Afro Fusion Live" },
-      { name: "description", content: "Afro Fusion radio, African music, online radio Nigeria, underground African music, live radio streaming, Afrobeat radio, African diaspora music, internet radio" },
-      { property: "og:description", content: "Afro Fusion radio, African music, online radio Nigeria, underground African music, live radio streaming, Afrobeat radio, African diaspora music, internet radio" },
-      { name: "twitter:description", content: "Afro Fusion radio, African music, online radio Nigeria, underground African music, live radio streaming, Afrobeat radio, African diaspora music, internet radio" },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/b2f3f28d-bd41-4222-ba58-baf6945f231e" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/b2f3f28d-bd41-4222-ba58-baf6945f231e" },
+      { name: "twitter:title", content: "Disturbing Africa Radio - Afro Fusion Live" },
+      {
+        name: "twitter:description",
+        content: "Afro Fusion radio. Bold, underground, unfiltered. Listen live now.",
+      },
+      { name: "twitter:image", content: SOCIAL_IMAGE_URL },
+      { name: "twitter:image:alt", content: SOCIAL_IMAGE_ALT },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: SITE_URL },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
