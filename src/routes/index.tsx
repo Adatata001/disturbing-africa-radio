@@ -59,28 +59,28 @@ const FEATURED_SHOWS = [
   {
     name: "Underground Frequencies",
     host: "with DJ Adisa",
-    schedule: "Mon â€“ Fri Â· 8 PM",
+    schedule: "Mon – Fri · 8 PM",
     tag: "Afro House",
     image: showMic,
   },
   {
     name: "Voices Of The Continent",
     host: "with Amara K.",
-    schedule: "Wed Â· 6 PM",
+    schedule: "Wed · 6 PM",
     tag: "Talk + Live",
     image: showVocal,
   },
   {
     name: "Crate Diggers",
     host: "with Selecta Bem",
-    schedule: "Sat Â· 10 PM",
+    schedule: "Sat · 10 PM",
     tag: "Vinyl Sets",
     image: showVinyl,
   },
 ];
 
 const VALUES = [
-  "Bold Curations â€” No Safe Playlists",
+  "Bold Curations — No Safe Playlists",
   "African Sound Diversity",
   "Cultural Integrity",
   "Platform For Emerging Talent",
@@ -114,7 +114,7 @@ function HomePage() {
           <div className="lg:col-span-8">
             <span className="inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-secondary">
               <Sparkles className="h-3 w-3" />
-              Afro Fusion Â· Mainstream + Underground
+              Afro Fusion · Mainstream + Underground
             </span>
             <h1 className="display mt-5 text-5xl font-black leading-[0.95] text-foreground sm:text-7xl lg:text-8xl">
               Welcome to{" "}
@@ -123,7 +123,7 @@ function HomePage() {
               Africa Radio
             </h1>
             <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
-              The freshest cuts from Africa's mainstream and underground â€” broadcasting bold,
+              The freshest cuts from Africa's mainstream and underground — broadcasting bold,
               unfiltered sound from Kaduna to the diaspora.
             </p>
 
@@ -152,7 +152,7 @@ function HomePage() {
               <div className="mt-2 display text-2xl font-black">Underground Frequencies</div>
               <div className="text-sm text-muted-foreground">with DJ Adisa</div>
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
-                <span className="text-xs text-muted-foreground">Afro House Â· Live</span>
+                <span className="text-xs text-muted-foreground">Afro House · Live</span>
                 <EqBars active={isPlaying} />
               </div>
             </div>
@@ -161,13 +161,18 @@ function HomePage() {
       </section>
 
       {/* MISSION STRIP */}
-      <section className="border-b border-border bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl overflow-hidden px-4 py-6">
-          <div className="flex items-center gap-8 whitespace-nowrap text-2xl font-black uppercase tracking-tight sm:text-3xl">
-            <span>â˜… Spread the Influence of African Underground Genres</span>
-            <span className="opacity-50">â˜… Bold Curations</span>
-            <span className="opacity-50">â˜… No Safe Playlists</span>
-            <span className="opacity-50">â˜… Cultural Integrity</span>
+      <section className="border-y border-border bg-primary text-primary-foreground">
+        <div className="overflow-hidden py-6">
+          <div className="flex w-max animate-marquee items-center gap-8 whitespace-nowrap text-2xl font-black uppercase tracking-tight sm:text-3xl">
+            {Array.from({ length: 2 }).map((_, i) => (
+              <div key={i} className="flex items-center gap-8 pr-8">
+                <span>★ Spread the Influence of African Underground Genres</span>
+                <span>★ Bold Curations</span>
+                <span>★ No Safe Playlists</span>
+                <span>★ Cultural Integrity</span>
+                <span>★ African Sound Diversity</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -231,7 +236,7 @@ function HomePage() {
                 <span className="text-primary">No compromises.</span>
               </h2>
               <p className="mt-4 max-w-md text-sm text-muted-foreground">
-                Our core values keep the signal pure â€” from selection to broadcast.
+                Our core values keep the signal pure — from selection to broadcast.
               </p>
             </div>
             <ul className="grid gap-3 sm:grid-cols-2 lg:col-span-8">
@@ -273,7 +278,7 @@ function HomePage() {
               <span className="text-gradient-brand">Limitless stories.</span>
             </h2>
             <p className="mt-6 text-base text-muted-foreground">
-              We position African music as a permanent force in global pop culture â€” building a
+              We position African music as a permanent force in global pop culture — building a
               platform for emerging talent, authentic conversations, and disruptive programming.
             </p>
             <Link
