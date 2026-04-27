@@ -80,7 +80,7 @@ export function SiteFooter() {
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
           <div>
-            © {new Date().getFullYear()} Disturbing Africa Radio. A subsidiary of{" "}
+            © 2025 Disturbing Africa Radio. A subsidiary of{" "}
             <span className="font-semibold text-foreground">Dstrb Afrik Global LTD</span>.
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-1">
