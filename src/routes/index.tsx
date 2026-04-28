@@ -153,13 +153,21 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl overflow-hidden px-4 py-6">
-          <div className="flex items-center gap-8 whitespace-nowrap text-2xl font-black uppercase tracking-tight sm:text-3xl">
-            <span>Spread the Influence of African Underground Genres</span>
-            <span className="opacity-50">Bold Curations</span>
-            <span className="opacity-50">No Safe Playlists</span>
-            <span className="opacity-50">Cultural Integrity</span>
+      <section className="border-y border-border bg-primary text-primary-foreground">
+        <div className="overflow-hidden py-6">
+          <div className="flex w-max animate-marquee items-center gap-8 whitespace-nowrap text-2xl font-black uppercase tracking-tight sm:text-3xl">
+            {Array.from({ length: 2 }).map((_, i) => (
+              <div key={i} className="flex items-center gap-8 pr-8">
+                <span>Spread the Influence of African Underground Genres</span>
+                <span aria-hidden>★</span>
+                <span>Bold Curations</span>
+                <span aria-hidden>★</span>
+                <span>No Safe Playlists</span>
+                <span aria-hidden>★</span>
+                <span>Cultural Integrity</span>
+                <span aria-hidden>★</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
