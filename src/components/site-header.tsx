@@ -80,7 +80,7 @@ export function SiteHeader() {
 
       {open && (
         <div className="border-t border-border bg-background md:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col p-2">
+          <nav className="mx-auto flex max-w-7xl flex-col items-end p-2 text-right">
             {nav.map((item) => (
               <Link
                 key={item.to}
