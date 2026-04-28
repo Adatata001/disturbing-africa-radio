@@ -23,12 +23,12 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4">
-        <Link to="/" className="group flex items-center gap-2">
-          <img 
-            src="/disturbing-africa-logo.png" 
-            alt="Disturbing Africa Radio" 
-            className="h-9 w-9"
+      <div className="mx-auto grid h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-4">
+        <Link to="/" className="group flex items-center gap-2 justify-self-start">
+          <img
+            src="/disturbing-africa-logo.png"
+            alt="Disturbing Africa Radio"
+            className="h-10 w-auto"
           />
           <div className="leading-tight">
             <div className="display text-base font-black tracking-tight text-foreground">
@@ -40,7 +40,7 @@ export function SiteHeader() {
           </div>
         </Link>
 
-        <nav className="ml-6 hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-1 justify-self-center md:flex">
           {nav.map((item) => (
             <Link
               key={item.to}
@@ -54,7 +54,7 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-3">
+        <div className="flex items-center gap-3 justify-self-end">
           <span
             className={`hidden items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest sm:inline-flex ${
               openNow
@@ -67,13 +67,6 @@ export function SiteHeader() {
             />
             {openNow ? "On Air" : "Off Air"}
           </span>
-
-          <a
-            href="#live-player"
-            className="hidden items-center gap-2 rounded-md bg-primary px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:opacity-95 sm:inline-flex"
-          >
-            Open Player
-          </a>
 
           <button
             className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border md:hidden"
