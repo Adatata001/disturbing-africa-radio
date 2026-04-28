@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X, Radio } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import * as React from "react";
 import { isOpenNow } from "@/lib/hours";
 
@@ -25,9 +25,11 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4">
         <Link to="/" className="group flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-primary-foreground">
-            <Radio className="h-5 w-5" />
-          </div>
+          <img 
+            src="/disturbing-africa-logo.png" 
+            alt="Disturbing Africa Radio" 
+            className="h-9 w-9"
+          />
           <div className="leading-tight">
             <div className="display text-base font-black tracking-tight text-foreground">
               Disturbing Africa
