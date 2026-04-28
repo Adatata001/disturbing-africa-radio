@@ -45,6 +45,25 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     audio.addEventListener("playing", onPlaying);
     audio.addEventListener("error", onError);
 
+    // Attempt autoplay on load. Browsers may block until user interacts.
+    audio.src = STREAM_URL + "?t=" + Date.now();
+    setIsLoading(true);
+    const attempt = audio.play();
+    if (attempt && typeof attempt.catch === "function") {
+      attempt.catch(() => {
+        setIsLoading(false);
+        setIsPlaying(false);
+        // Fallback: start on first user interaction anywhere on the page.
+        const resume = () => {
+          audio.play().catch(() => {});
+          window.removeEventListener("pointerdown", resume);
+          window.removeEventListener("keydown", resume);
+        };
+        window.addEventListener("pointerdown", resume, { once: true });
+        window.addEventListener("keydown", resume, { once: true });
+      });
+    }
+
     return () => {
       audio.pause();
       audio.removeEventListener("play", onPlay);
