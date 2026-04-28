@@ -36,7 +36,7 @@
 :root {
   --radius: 0.5rem;
 
-  /* Disturbing Africa Radio — bold dark theme */
+  /* Disturbing Africa Radio - bold dark theme */
   --background: oklch(0.14 0.01 95);
   --foreground: oklch(0.97 0.02 95);
 
@@ -76,7 +76,7 @@
 }
 
 .dark {
-  /* same as root — site is dark by default */
+  /* Same as root - site is dark by default. */
 }
 
 @layer base {
@@ -122,20 +122,5 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-  }
-
-  /* EQ bars animation */
-  @keyframes eq {
-    0%,
-    100% {
-      transform: scaleY(0.3);
-    }
-    50% {
-      transform: scaleY(1);
-    }
-  }
-  .eq-bar {
-    transform-origin: bottom;
-    animation: eq 0.9s ease-in-out infinite;
   }
 }

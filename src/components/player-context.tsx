@@ -80,7 +80,9 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
 
   const setVolume = React.useCallback((v: number) => {
     setVolumeState(v);
-    if (audioRef.current) audioRef.current.volume = v;
+    if (audioRef.current) {
+      audioRef.current.volume = v;
+    }
   }, []);
 
   return (
@@ -92,6 +94,8 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
 
 export function usePlayer() {
   const v = React.useContext(Ctx);
-  if (!v) throw new Error("usePlayer must be used within PlayerProvider");
+  if (!v) {
+    throw new Error("usePlayer must be used within PlayerProvider");
+  }
   return v;
 }

@@ -21,7 +21,7 @@ function NotFoundComponent() {
         <h1 className="display text-7xl font-black text-primary">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">Off-frequency</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          We can't tune into that page. Let's get you back to the studio.
+          We can&apos;t tune into that page. Let&apos;s get you back to the studio.
         </p>
         <div className="mt-6">
           <Link
