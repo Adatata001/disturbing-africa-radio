@@ -27,10 +27,7 @@ export function LivePlayerBar() {
 
         <div className="flex min-w-0 flex-1 items-center gap-3">
           <span className="flex items-center gap-1.5 rounded-full border border-secondary/40 bg-secondary/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-secondary">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-75" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-secondary" />
-            </span>
+            <span className="inline-flex h-1.5 w-1.5 rounded-full bg-secondary" />
             Live
           </span>
           <div className="min-w-0">

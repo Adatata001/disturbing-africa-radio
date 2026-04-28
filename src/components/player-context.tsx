@@ -1,7 +1,6 @@
 import * as React from "react";
 
-export const STREAM_URL =
-  "https://stream.zeno.fm/0r0xa792kwzuv"; // placeholder — swap with your real Disturbing Africa Radio stream URL
+export const STREAM_URL = "/audio/my-munchikin.mp3"; // test audio — will be replaced with caster.fm stream URL
 
 type PlayerCtx = {
   isPlaying: boolean;
