@@ -1,13 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Twitter, Youtube, MessageCircle, HeartHandshake, MapPin, Clock, Radio } from "lucide-react";
-
-export const SOCIALS = {
-  instagram: "#",
-  twitter: "#",
-  youtube: "#",
-  whatsapp: "#",
-  tipjar: "#",
-};
+import { Instagram, HeartHandshake, MapPin, Clock, Radio } from "lucide-react";
+import { FacebookIcon, SOCIAL_HANDLE, SOCIALS, TikTokIcon } from "@/lib/socials";
 
 export function SiteFooter() {
   return (
@@ -21,24 +14,20 @@ export function SiteFooter() {
             <div className="display text-lg font-black">Disturbing Africa Radio</div>
           </div>
           <p className="mt-4 max-w-md text-sm text-muted-foreground">
-            Afro Fusion radio broadcasting the latest & freshest from the mainstream &
-            underground. Spreading the influence of African underground genres across the
-            continent and the diaspora.
+            Afro Fusion radio broadcasting the latest and freshest from the mainstream
+            and underground. Spreading the influence of African underground genres
+            across the continent and the diaspora.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href={SOCIALS.whatsapp}
-              className="inline-flex items-center gap-2 rounded-md bg-secondary px-3 py-2 text-xs font-bold uppercase tracking-wider text-secondary-foreground"
-            >
-              <MessageCircle className="h-4 w-4" /> WhatsApp Community
-            </a>
-            <a
-              href={SOCIALS.tipjar}
-              className="inline-flex items-center gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-xs font-bold uppercase tracking-wider text-primary"
-            >
-              <HeartHandshake className="h-4 w-4" /> Tip Jar
-            </a>
-          </div>
+          <a
+            href={SOCIALS.tipjar}
+            className="mt-6 inline-flex items-center gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-xs font-bold uppercase tracking-wider text-primary"
+          >
+            <HeartHandshake className="h-4 w-4" /> Tip Jar
+          </a>
+          <p className="mt-4 max-w-md text-sm text-muted-foreground">
+            Follow us on TikTok, Instagram, and Facebook as{" "}
+            <span className="font-semibold text-foreground">{SOCIAL_HANDLE}</span>.
+          </p>
         </div>
 
         <div>
@@ -50,18 +39,36 @@ export function SiteFooter() {
             </li>
             <li className="flex gap-2">
               <Clock className="h-4 w-4 shrink-0 text-secondary" />
-              <span>On Air daily — 5:00 AM to 12:00 AM</span>
+              <span>On Air daily - 5:00 AM to 12:00 AM</span>
             </li>
           </ul>
           <div className="mt-6 flex gap-2">
-            <a href={SOCIALS.instagram} aria-label="Instagram" className="rounded-md border border-border p-2 hover:border-primary hover:text-primary">
+            <a
+              href={SOCIALS.tiktok}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="TikTok"
+              className="rounded-md border border-border p-2 hover:border-primary hover:text-primary"
+            >
+              <TikTokIcon className="h-4 w-4" />
+            </a>
+            <a
+              href={SOCIALS.instagram}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="rounded-md border border-border p-2 hover:border-primary hover:text-primary"
+            >
               <Instagram className="h-4 w-4" />
             </a>
-            <a href={SOCIALS.twitter} aria-label="Twitter" className="rounded-md border border-border p-2 hover:border-primary hover:text-primary">
-              <Twitter className="h-4 w-4" />
-            </a>
-            <a href={SOCIALS.youtube} aria-label="YouTube" className="rounded-md border border-border p-2 hover:border-primary hover:text-primary">
-              <Youtube className="h-4 w-4" />
+            <a
+              href={SOCIALS.facebook}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+              className="rounded-md border border-border p-2 hover:border-primary hover:text-primary"
+            >
+              <FacebookIcon className="h-4 w-4" />
             </a>
           </div>
         </div>
@@ -69,10 +76,26 @@ export function SiteFooter() {
         <div>
           <div className="text-xs font-bold uppercase tracking-widest text-primary">Explore</div>
           <ul className="mt-4 space-y-2 text-sm">
-            <li><Link to="/" className="text-muted-foreground hover:text-foreground">Home</Link></li>
-            <li><Link to="/shows" className="text-muted-foreground hover:text-foreground">Shows & Schedule</Link></li>
-            <li><Link to="/about" className="text-muted-foreground hover:text-foreground">About</Link></li>
-            <li><Link to="/contact" className="text-muted-foreground hover:text-foreground">Contact</Link></li>
+            <li>
+              <Link to="/" className="text-muted-foreground hover:text-foreground">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/shows" className="text-muted-foreground hover:text-foreground">
+                Shows & Schedule
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="text-muted-foreground hover:text-foreground">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="text-muted-foreground hover:text-foreground">
+                Contact
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
@@ -80,11 +103,11 @@ export function SiteFooter() {
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
           <div>
-            © {new Date().getFullYear()} Disturbing Africa Radio. A subsidiary of{" "}
+            (c) {new Date().getFullYear()} Disturbing Africa Radio. A subsidiary of{" "}
             <span className="font-semibold text-foreground">Dstrb Afrik Global LTD</span>.
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-1">
-            <span>CEO — Abraham Yusuf</span>
+            <span>CEO - Abraham Yusuf</span>
             <span className="inline-flex items-center gap-1">
               <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
               Certified 9 / 10 / 25
@@ -92,7 +115,6 @@ export function SiteFooter() {
           </div>
         </div>
       </div>
-      {/* spacer so persistent player doesn't cover footer text */}
       <div className="h-20" />
     </footer>
   );

@@ -1,7 +1,6 @@
 import * as React from "react";
 
-export const STREAM_URL =
-  "https://stream.zeno.fm/0r0xa792kwzuv"; // placeholder — swap with your real Disturbing Africa Radio stream URL
+export const STREAM_URL = "/disturbing-africa-test-audio.wav";
 
 type PlayerCtx = {
   isPlaying: boolean;
@@ -21,13 +20,17 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
 
   React.useEffect(() => {
     const audio = new Audio();
-    audio.preload = "none";
+    audio.preload = "metadata";
     audio.crossOrigin = "anonymous";
     audio.volume = volume;
     audioRef.current = audio;
 
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
+    const onEnded = () => {
+      setIsLoading(false);
+      setIsPlaying(false);
+    };
     const onWaiting = () => setIsLoading(true);
     const onPlaying = () => setIsLoading(false);
     const onError = () => {
@@ -37,6 +40,7 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
 
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
+    audio.addEventListener("ended", onEnded);
     audio.addEventListener("waiting", onWaiting);
     audio.addEventListener("playing", onPlaying);
     audio.addEventListener("error", onError);
@@ -45,6 +49,7 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
       audio.pause();
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("ended", onEnded);
       audio.removeEventListener("waiting", onWaiting);
       audio.removeEventListener("playing", onPlaying);
       audio.removeEventListener("error", onError);
@@ -56,19 +61,21 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
   const toggle = React.useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
+
     if (audio.paused) {
-      // reset src on each play to avoid stale buffer on live stream
+      // Reload on each play so the latest local test file is used.
       audio.src = STREAM_URL + "?t=" + Date.now();
       setIsLoading(true);
       audio.play().catch(() => {
         setIsLoading(false);
         setIsPlaying(false);
       });
-    } else {
-      audio.pause();
-      audio.removeAttribute("src");
-      audio.load();
+      return;
     }
+
+    audio.pause();
+    audio.removeAttribute("src");
+    audio.load();
   }, []);
 
   const setVolume = React.useCallback((v: number) => {

@@ -1,19 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MapPin, Clock, MessageCircle, HeartHandshake, Instagram, Twitter, Youtube, Mail } from "lucide-react";
-import { SOCIALS } from "@/components/site-footer";
-import { isOpenNow } from "@/lib/hours";
+import { MapPin, Clock, HeartHandshake, Instagram, Mail } from "lucide-react";
 import * as React from "react";
+import { isOpenNow } from "@/lib/hours";
+import { FacebookIcon, SOCIAL_HANDLE, SOCIALS, TikTokIcon } from "@/lib/socials";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Disturbing Africa Radio" },
+      { title: "Contact - Disturbing Africa Radio" },
       {
         name: "description",
         content:
-          "Visit Disturbing Africa Radio at C10 Bugai Street, Makera, Kaduna. Open daily 5AM – 12AM. Connect via WhatsApp and socials.",
+          "Visit Disturbing Africa Radio at C10 Bugai Street, Makera, Kaduna. Open daily 5AM - 12AM. Connect via TikTok, Instagram, and Facebook.",
       },
-      { property: "og:title", content: "Contact — Disturbing Africa Radio" },
+      { property: "og:title", content: "Contact - Disturbing Africa Radio" },
       {
         property: "og:description",
         content: "Studio address, hours and ways to connect with Disturbing Africa Radio.",
@@ -25,6 +25,7 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [openNow, setOpenNow] = React.useState(false);
+
   React.useEffect(() => {
     const update = () => setOpenNow(isOpenNow());
     update();
@@ -43,14 +44,13 @@ function ContactPage() {
             Visit the <span className="text-gradient-brand">studio.</span>
           </h1>
           <p className="mt-4 max-w-xl text-muted-foreground">
-            Drop a line, slide into the WhatsApp community, or come find us in Kaduna.
+            Drop a line, follow us on social, or come find us in Kaduna.
           </p>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16">
         <div className="grid gap-8 lg:grid-cols-2">
-          {/* INFO */}
           <div className="space-y-6">
             <div className="rounded-xl border border-border bg-card p-6">
               <div className="flex items-start gap-4">
@@ -78,7 +78,7 @@ function ContactPage() {
                   <div className="text-xs font-bold uppercase tracking-widest text-secondary">
                     On Air Hours
                   </div>
-                  <div className="mt-1 display text-xl font-black">5:00 AM — 12:00 AM</div>
+                  <div className="mt-1 display text-xl font-black">5:00 AM - 12:00 AM</div>
                   <div className="text-sm text-muted-foreground">Daily, all week</div>
                 </div>
                 <span
@@ -88,7 +88,9 @@ function ContactPage() {
                       : "border-border bg-muted text-muted-foreground"
                   }`}
                 >
-                  <span className={`h-1.5 w-1.5 rounded-full ${openNow ? "bg-secondary" : "bg-muted-foreground"}`} />
+                  <span
+                    className={`h-1.5 w-1.5 rounded-full ${openNow ? "bg-secondary" : "bg-muted-foreground"}`}
+                  />
                   {openNow ? "Open now" : "Closed"}
                 </span>
               </div>
@@ -104,22 +106,16 @@ function ContactPage() {
                     Email
                   </div>
                   <a
-                    href="mailto:hello@disturbingafricaradio.com"
+                    href="mailto:madeinafricastudio04@gmail.com"
                     className="mt-1 block display text-xl font-black text-foreground hover:text-primary"
                   >
-                    hello@disturbingafricaradio.com
+                    madeinafricastudio04@gmail.com
                   </a>
                 </div>
               </div>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              <a
-                href={SOCIALS.whatsapp}
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-secondary px-5 py-4 text-sm font-bold uppercase tracking-wider text-secondary-foreground"
-              >
-                <MessageCircle className="h-4 w-4" /> WhatsApp Community
-              </a>
+            <div className="grid gap-3">
               <a
                 href={SOCIALS.tipjar}
                 className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-4 text-sm font-bold uppercase tracking-wider text-primary-foreground"
@@ -128,20 +124,42 @@ function ContactPage() {
               </a>
             </div>
 
+            <div className="text-sm text-muted-foreground">
+              Find us on TikTok, Instagram, and Facebook as{" "}
+              <span className="font-semibold text-foreground">{SOCIAL_HANDLE}</span>.
+            </div>
+
             <div className="flex gap-2">
-              <a href={SOCIALS.instagram} aria-label="Instagram" className="rounded-md border border-border p-3 hover:border-primary hover:text-primary">
+              <a
+                href={SOCIALS.tiktok}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="TikTok"
+                className="rounded-md border border-border p-3 hover:border-primary hover:text-primary"
+              >
+                <TikTokIcon className="h-5 w-5" />
+              </a>
+              <a
+                href={SOCIALS.instagram}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                className="rounded-md border border-border p-3 hover:border-primary hover:text-primary"
+              >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href={SOCIALS.twitter} aria-label="Twitter" className="rounded-md border border-border p-3 hover:border-primary hover:text-primary">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href={SOCIALS.youtube} aria-label="YouTube" className="rounded-md border border-border p-3 hover:border-primary hover:text-primary">
-                <Youtube className="h-5 w-5" />
+              <a
+                href={SOCIALS.facebook}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                className="rounded-md border border-border p-3 hover:border-primary hover:text-primary"
+              >
+                <FacebookIcon className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          {/* MAP */}
           <div className="overflow-hidden rounded-xl border border-border bg-card">
             <iframe
               title="Disturbing Africa Radio location"

@@ -1,10 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  HeartHandshake,
-  MessageCircle,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, HeartHandshake, Instagram, Sparkles } from "lucide-react";
 import heroDj from "@/assets/hero-dj.jpg";
 import showMic from "@/assets/show-mic.jpg";
 import showVocal from "@/assets/show-vocal.jpg";
@@ -12,7 +7,7 @@ import showVinyl from "@/assets/show-vinyl.jpg";
 import community from "@/assets/community.jpg";
 import { EqBars } from "@/components/eq-bars";
 import { usePlayer } from "@/components/player-context";
-import { SOCIALS } from "@/components/site-footer";
+import { FacebookIcon, SOCIAL_HANDLE, SOCIALS, TikTokIcon } from "@/lib/socials";
 import {
   SITE_URL,
   SOCIAL_IMAGE_ALT,
@@ -59,28 +54,28 @@ const FEATURED_SHOWS = [
   {
     name: "Underground Frequencies",
     host: "with DJ Adisa",
-    schedule: "Mon â€“ Fri Â· 8 PM",
+    schedule: "Mon - Fri | 8 PM",
     tag: "Afro House",
     image: showMic,
   },
   {
     name: "Voices Of The Continent",
     host: "with Amara K.",
-    schedule: "Wed Â· 6 PM",
+    schedule: "Wed | 6 PM",
     tag: "Talk + Live",
     image: showVocal,
   },
   {
     name: "Crate Diggers",
     host: "with Selecta Bem",
-    schedule: "Sat Â· 10 PM",
+    schedule: "Sat | 10 PM",
     tag: "Vinyl Sets",
     image: showVinyl,
   },
-];
+] as const;
 
 const VALUES = [
-  "Bold Curations â€” No Safe Playlists",
+  "Bold Curations - No Safe Playlists",
   "African Sound Diversity",
   "Cultural Integrity",
   "Platform For Emerging Talent",
@@ -90,14 +85,13 @@ const VALUES = [
   "Consistency & Quality Control",
   "Community-Driven Growth",
   "Independence From Industry Politics",
-];
+] as const;
 
 function HomePage() {
   const { isPlaying, toggle } = usePlayer();
 
   return (
     <div>
-      {/* HERO */}
       <section className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0">
           <img
@@ -114,25 +108,24 @@ function HomePage() {
           <div className="lg:col-span-8">
             <span className="inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-secondary">
               <Sparkles className="h-3 w-3" />
-              Afro Fusion Â· Mainstream + Underground
+              Afro Fusion | Mainstream + Underground
             </span>
             <h1 className="display mt-5 text-5xl font-black leading-[0.95] text-foreground sm:text-7xl lg:text-8xl">
-              Welcome to{" "}
-              <span className="text-gradient-brand">Disturbing</span>
+              Welcome to <span className="text-gradient-brand">Disturbing</span>
               <br />
               Africa Radio
             </h1>
             <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
-              The freshest cuts from Africa's mainstream and underground â€” broadcasting bold,
-              unfiltered sound from Kaduna to the diaspora.
+              The freshest cuts from Africa&apos;s mainstream and underground -
+              broadcasting bold, unfiltered sound from Kaduna to the diaspora.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <button
                 onClick={toggle}
-                className="inline-flex items-center gap-3 rounded-md bg-primary px-6 py-3.5 text-sm font-black uppercase tracking-wider text-primary-foreground shadow-[var(--shadow-glow)] transition-transform hover:scale-[1.02]"
+                className="inline-flex items-center gap-3 rounded-md bg-primary px-6 py-3.5 text-sm font-black uppercase tracking-wider text-primary-foreground shadow-[var(--shadow-glow)]"
               >
-                {isPlaying ? "Now Streaming" : "Listen Live"}
+                {isPlaying ? "Now Playing" : "Listen Live"}
                 <EqBars active={isPlaying} className="h-4" />
               </button>
               <Link
@@ -152,7 +145,7 @@ function HomePage() {
               <div className="mt-2 display text-2xl font-black">Underground Frequencies</div>
               <div className="text-sm text-muted-foreground">with DJ Adisa</div>
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
-                <span className="text-xs text-muted-foreground">Afro House Â· Live</span>
+                <span className="text-xs text-muted-foreground">Afro House | Live</span>
                 <EqBars active={isPlaying} />
               </div>
             </div>
@@ -160,19 +153,17 @@ function HomePage() {
         </div>
       </section>
 
-      {/* MISSION STRIP */}
       <section className="border-b border-border bg-primary text-primary-foreground">
         <div className="mx-auto max-w-7xl overflow-hidden px-4 py-6">
           <div className="flex items-center gap-8 whitespace-nowrap text-2xl font-black uppercase tracking-tight sm:text-3xl">
-            <span>â˜… Spread the Influence of African Underground Genres</span>
-            <span className="opacity-50">â˜… Bold Curations</span>
-            <span className="opacity-50">â˜… No Safe Playlists</span>
-            <span className="opacity-50">â˜… Cultural Integrity</span>
+            <span>Spread the Influence of African Underground Genres</span>
+            <span className="opacity-50">Bold Curations</span>
+            <span className="opacity-50">No Safe Playlists</span>
+            <span className="opacity-50">Cultural Integrity</span>
           </div>
         </div>
       </section>
 
-      {/* FEATURED SHOWS */}
       <section className="mx-auto max-w-7xl px-4 py-20">
         <div className="flex items-end justify-between gap-4">
           <div>
@@ -193,14 +184,14 @@ function HomePage() {
           {FEATURED_SHOWS.map((show) => (
             <article
               key={show.name}
-              className="group overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/60"
+              className="overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/60"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img
                   src={show.image}
                   alt={show.name}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover"
                 />
                 <span className="absolute left-3 top-3 rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary-foreground">
                   {show.tag}
@@ -218,7 +209,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* CORE VALUES */}
       <section className="border-y border-border bg-card/40">
         <div className="mx-auto max-w-7xl px-4 py-20">
           <div className="grid gap-10 lg:grid-cols-12">
@@ -227,23 +217,24 @@ function HomePage() {
                 What we stand for
               </div>
               <h2 className="display mt-2 text-4xl font-black leading-[0.95] sm:text-5xl">
-                Ten rules.<br />
+                Ten rules.
+                <br />
                 <span className="text-primary">No compromises.</span>
               </h2>
               <p className="mt-4 max-w-md text-sm text-muted-foreground">
-                Our core values keep the signal pure â€” from selection to broadcast.
+                Our core values keep the signal pure - from selection to broadcast.
               </p>
             </div>
             <ul className="grid gap-3 sm:grid-cols-2 lg:col-span-8">
-              {VALUES.map((v, i) => (
+              {VALUES.map((value, i) => (
                 <li
-                  key={v}
+                  key={value}
                   className="flex items-start gap-3 rounded-lg border border-border bg-background/40 p-4 transition-colors hover:border-primary/40"
                 >
                   <span className="display flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary text-sm font-black text-primary-foreground">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="pt-1.5 text-sm font-semibold text-foreground">{v}</span>
+                  <span className="pt-1.5 text-sm font-semibold text-foreground">{value}</span>
                 </li>
               ))}
             </ul>
@@ -251,7 +242,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* EDITORIAL BLOCK */}
       <section className="mx-auto max-w-7xl px-4 py-20">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div className="relative overflow-hidden rounded-xl border border-border">
@@ -269,12 +259,14 @@ function HomePage() {
               Our vision
             </div>
             <h2 className="display mt-2 text-4xl font-black leading-[0.95] sm:text-6xl">
-              United voices.<br />
+              United voices.
+              <br />
               <span className="text-gradient-brand">Limitless stories.</span>
             </h2>
             <p className="mt-6 text-base text-muted-foreground">
-              We position African music as a permanent force in global pop culture â€” building a
-              platform for emerging talent, authentic conversations, and disruptive programming.
+              We position African music as a permanent force in global pop culture -
+              building a platform for emerging talent, authentic conversations, and
+              disruptive programming.
             </p>
             <Link
               to="/about"
@@ -286,28 +278,46 @@ function HomePage() {
         </div>
       </section>
 
-      {/* COMMUNITY CTA */}
       <section className="mx-auto max-w-7xl px-4 pb-10">
         <div className="overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/15 via-background to-secondary/15 p-8 sm:p-12">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <div className="max-w-xl">
               <div className="text-xs font-bold uppercase tracking-widest text-secondary">
-                Join the movement
+                Follow the movement
               </div>
               <h2 className="display mt-2 text-3xl font-black sm:text-4xl">
                 Support the signal. Power the sound.
               </h2>
               <p className="mt-3 text-sm text-muted-foreground">
-                Join our WhatsApp community, drop into the chat, or tip the studio to keep
-                independent African radio on air.
+                Follow <span className="font-semibold text-foreground">{SOCIAL_HANDLE}</span> on
+                TikTok, Instagram, and Facebook, or tip the studio to keep independent
+                African radio on air.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <a
-                href={SOCIALS.whatsapp}
-                className="inline-flex items-center gap-2 rounded-md bg-secondary px-5 py-3 text-sm font-bold uppercase tracking-wider text-secondary-foreground"
+                href={SOCIALS.tiktok}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-md border border-border bg-background/70 px-5 py-3 text-sm font-bold uppercase tracking-wider text-foreground hover:border-primary hover:text-primary"
               >
-                <MessageCircle className="h-4 w-4" /> WhatsApp
+                <TikTokIcon className="h-4 w-4" /> TikTok
+              </a>
+              <a
+                href={SOCIALS.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-md border border-border bg-background/70 px-5 py-3 text-sm font-bold uppercase tracking-wider text-foreground hover:border-primary hover:text-primary"
+              >
+                <Instagram className="h-4 w-4" /> Instagram
+              </a>
+              <a
+                href={SOCIALS.facebook}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-md border border-border bg-background/70 px-5 py-3 text-sm font-bold uppercase tracking-wider text-foreground hover:border-primary hover:text-primary"
+              >
+                <FacebookIcon className="h-4 w-4" /> Facebook
               </a>
               <a
                 href={SOCIALS.tipjar}
