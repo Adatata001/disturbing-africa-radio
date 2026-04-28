@@ -3,24 +3,16 @@ type Props = {
   className?: string;
 };
 
-export function EqBars({ active, className }: Props) {
+export function EqBars({ active: _active, className }: Props) {
   return (
     <div className={`flex h-5 items-end gap-[3px] ${className ?? ""}`} aria-hidden>
-      {[0, 1, 2, 3].map((i) => (
+      {[0.4, 0.7, 0.5, 0.9].map((h, i) => (
         <span
           key={i}
           className="block w-[3px] rounded-sm bg-primary"
-          style={{
-            height: "100%",
-            animationPlayState: active ? "running" : "paused",
-            animationDelay: `${i * 0.12}s`,
-            transform: active ? undefined : "scaleY(0.25)",
-          }}
+          style={{ height: `${h * 100}%` }}
         />
       ))}
-      <style>{`
-        .flex > span { animation: eq 0.9s ease-in-out infinite; transform-origin: bottom; }
-      `}</style>
     </div>
   );
 }
