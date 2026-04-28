@@ -24,14 +24,6 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:grid md:grid-cols-[1fr_auto_1fr]">
-        <button
-          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border md:hidden"
-          onClick={() => setOpen((o) => !o)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-
         <Link to="/" className="group flex items-center gap-2 md:justify-self-start">
           <img
             src="/disturbing-africa-logo.png"
@@ -62,7 +54,7 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3 md:justify-self-end">
+        <div className="flex items-center gap-3 justify-self-end">
           <span
             className={`hidden items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest sm:inline-flex ${
               openNow
@@ -75,6 +67,14 @@ export function SiteHeader() {
             />
             {openNow ? "On Air" : "Off Air"}
           </span>
+
+          <button
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border md:hidden"
+            onClick={() => setOpen((o) => !o)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
       </div>
 
