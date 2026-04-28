@@ -1,11 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Twitter, Youtube, MessageCircle, HeartHandshake, MapPin, Clock, Radio } from "lucide-react";
+import { Instagram, Facebook, HeartHandshake, MapPin, Clock, Radio, Music2 } from "lucide-react";
+
+const HANDLE = "disturbingafricaltd";
 
 export const SOCIALS = {
-  instagram: "#",
-  twitter: "#",
-  youtube: "#",
-  whatsapp: "#",
+  tiktok: `https://www.tiktok.com/@${HANDLE}`,
+  instagram: `https://www.instagram.com/${HANDLE}`,
+  facebook: `https://www.facebook.com/${HANDLE}`,
   tipjar: "#",
 };
 
@@ -27,16 +28,10 @@ export function SiteFooter() {
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a
-              href={SOCIALS.whatsapp}
-              className="inline-flex items-center gap-2 rounded-md bg-secondary px-3 py-2 text-xs font-bold uppercase tracking-wider text-secondary-foreground"
-            >
-              <MessageCircle className="h-4 w-4" /> WhatsApp Community
-            </a>
-            <a
               href={SOCIALS.tipjar}
               className="inline-flex items-center gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-xs font-bold uppercase tracking-wider text-primary"
             >
-              <HeartHandshake className="h-4 w-4" /> Tip Jar
+              <HeartHandshake className="h-4 w-4" /> Tip Studio
             </a>
           </div>
         </div>
@@ -54,16 +49,17 @@ export function SiteFooter() {
             </li>
           </ul>
           <div className="mt-6 flex gap-2">
+            <a href={SOCIALS.tiktok} aria-label="TikTok" className="rounded-md border border-border p-2 hover:border-primary hover:text-primary">
+              <Music2 className="h-4 w-4" />
+            </a>
             <a href={SOCIALS.instagram} aria-label="Instagram" className="rounded-md border border-border p-2 hover:border-primary hover:text-primary">
               <Instagram className="h-4 w-4" />
             </a>
-            <a href={SOCIALS.twitter} aria-label="Twitter" className="rounded-md border border-border p-2 hover:border-primary hover:text-primary">
-              <Twitter className="h-4 w-4" />
-            </a>
-            <a href={SOCIALS.youtube} aria-label="YouTube" className="rounded-md border border-border p-2 hover:border-primary hover:text-primary">
-              <Youtube className="h-4 w-4" />
+            <a href={SOCIALS.facebook} aria-label="Facebook" className="rounded-md border border-border p-2 hover:border-primary hover:text-primary">
+              <Facebook className="h-4 w-4" />
             </a>
           </div>
+          <div className="mt-3 text-xs text-muted-foreground">@{HANDLE}</div>
         </div>
 
         <div>

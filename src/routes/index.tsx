@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   HeartHandshake,
-  MessageCircle,
   Sparkles,
 } from "lucide-react";
 import heroDj from "@/assets/hero-dj.jpg";
@@ -303,17 +302,10 @@ function HomePage() {
                 Support the signal. Power the sound.
               </h2>
               <p className="mt-3 text-sm text-muted-foreground">
-                Join our WhatsApp community, drop into the chat, or tip the studio to keep
-                independent African radio on air.
+                Tip the studio to keep independent African radio on air.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <a
-                href={SOCIALS.whatsapp}
-                className="inline-flex items-center gap-2 rounded-md bg-secondary px-5 py-3 text-sm font-bold uppercase tracking-wider text-secondary-foreground"
-              >
-                <MessageCircle className="h-4 w-4" /> WhatsApp
-              </a>
               <a
                 href={SOCIALS.tipjar}
                 className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-bold uppercase tracking-wider text-primary-foreground"
