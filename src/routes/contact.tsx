@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MapPin, Clock, MessageCircle, HeartHandshake, Instagram, Twitter, Youtube, Mail } from "lucide-react";
+import { MapPin, Clock, HeartHandshake, Instagram, Facebook, Music2, Mail } from "lucide-react";
 import { SOCIALS } from "@/components/site-footer";
 import { isOpenNow } from "@/lib/hours";
 import * as React from "react";
@@ -113,13 +113,7 @@ function ContactPage() {
               </div>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              <a
-                href={SOCIALS.whatsapp}
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-secondary px-5 py-4 text-sm font-bold uppercase tracking-wider text-secondary-foreground"
-              >
-                <MessageCircle className="h-4 w-4" /> WhatsApp Community
-              </a>
+            <div>
               <a
                 href={SOCIALS.tipjar}
                 className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-4 text-sm font-bold uppercase tracking-wider text-primary-foreground"
@@ -129,14 +123,14 @@ function ContactPage() {
             </div>
 
             <div className="flex gap-2">
+              <a href={SOCIALS.tiktok} aria-label="TikTok" className="rounded-md border border-border p-3 hover:border-primary hover:text-primary">
+                <Music2 className="h-5 w-5" />
+              </a>
               <a href={SOCIALS.instagram} aria-label="Instagram" className="rounded-md border border-border p-3 hover:border-primary hover:text-primary">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href={SOCIALS.twitter} aria-label="Twitter" className="rounded-md border border-border p-3 hover:border-primary hover:text-primary">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href={SOCIALS.youtube} aria-label="YouTube" className="rounded-md border border-border p-3 hover:border-primary hover:text-primary">
-                <Youtube className="h-5 w-5" />
+              <a href={SOCIALS.facebook} aria-label="Facebook" className="rounded-md border border-border p-3 hover:border-primary hover:text-primary">
+                <Facebook className="h-5 w-5" />
               </a>
             </div>
           </div>
