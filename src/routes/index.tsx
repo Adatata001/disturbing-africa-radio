@@ -106,7 +106,7 @@ function HomePage() {
         </div>
 
         <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-20 md:py-28 lg:grid-cols-12">
-          <div className="lg:col-span-8">
+          <Reveal direction="left" className="lg:col-span-8">
             <span className="inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-secondary">
               <Sparkles className="h-3 w-3" />
               Afro Fusion | Mainstream + Underground
@@ -136,9 +136,9 @@ function HomePage() {
                 Explore Shows <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="hidden self-end lg:col-span-4 lg:block">
+          <Reveal direction="right" delay={150} className="hidden self-end lg:col-span-4 lg:block">
             <div className="rounded-xl border border-border bg-card/60 p-6 backdrop-blur">
               <div className="text-[11px] font-bold uppercase tracking-widest text-primary">
                 On Air Now
@@ -150,7 +150,7 @@ function HomePage() {
                 <EqBars active={isPlaying} />
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
