@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, HeartHandshake, MapPin, Clock, Radio } from "lucide-react";
-import { FacebookIcon, SOCIAL_HANDLE, SOCIALS, TikTokIcon } from "@/lib/socials";
+import { Instagram, MapPin, Clock, Radio } from "lucide-react";
+import { SOCIAL_HANDLE, SOCIALS, TwitterIcon } from "@/lib/socials";
 
 export function SiteFooter() {
   return (
@@ -11,27 +11,21 @@ export function SiteFooter() {
             <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-primary-foreground">
               <Radio className="h-5 w-5" />
             </div>
-            <div className="display text-lg font-black">Disturbing Africa Radio</div>
+            <div className="display text-lg">Disturbing Africa Radio</div>
           </div>
           <p className="mt-4 max-w-md text-sm text-muted-foreground">
             Afro Fusion radio broadcasting the latest and freshest from the mainstream
             and underground. Spreading the influence of African underground genres
             across the continent and the diaspora.
           </p>
-          <a
-            href={SOCIALS.tipjar}
-            className="mt-6 inline-flex items-center gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-xs font-bold uppercase tracking-wider text-primary"
-          >
-            <HeartHandshake className="h-4 w-4" /> Tip Jar
-          </a>
           <p className="mt-4 max-w-md text-sm text-muted-foreground">
-            Follow us on TikTok, Instagram, and Facebook as{" "}
+            Follow us on Instagram and Twitter as{" "}
             <span className="font-semibold text-foreground">{SOCIAL_HANDLE}</span>.
           </p>
         </div>
 
         <div>
-          <div className="text-xs font-bold uppercase tracking-widest text-primary">Visit</div>
+          <div className="text-xs font-semibold uppercase tracking-widest text-primary">Visit</div>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
             <li className="flex gap-2">
               <MapPin className="h-4 w-4 shrink-0 text-secondary" />
@@ -44,15 +38,6 @@ export function SiteFooter() {
           </ul>
           <div className="mt-6 flex gap-2">
             <a
-              href={SOCIALS.tiktok}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="TikTok"
-              className="rounded-md border border-border p-2 hover:border-primary hover:text-primary"
-            >
-              <TikTokIcon className="h-4 w-4" />
-            </a>
-            <a
               href={SOCIALS.instagram}
               target="_blank"
               rel="noreferrer"
@@ -62,19 +47,19 @@ export function SiteFooter() {
               <Instagram className="h-4 w-4" />
             </a>
             <a
-              href={SOCIALS.facebook}
+              href={SOCIALS.twitter}
               target="_blank"
               rel="noreferrer"
-              aria-label="Facebook"
+              aria-label="Twitter"
               className="rounded-md border border-border p-2 hover:border-primary hover:text-primary"
             >
-              <FacebookIcon className="h-4 w-4" />
+              <TwitterIcon className="h-4 w-4" />
             </a>
           </div>
         </div>
 
         <div>
-          <div className="text-xs font-bold uppercase tracking-widest text-primary">Explore</div>
+          <div className="text-xs font-semibold uppercase tracking-widest text-primary">Explore</div>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
               <Link to="/" className="text-muted-foreground hover:text-foreground">

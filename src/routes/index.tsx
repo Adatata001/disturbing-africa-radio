@@ -7,7 +7,7 @@ import showVinyl from "@/assets/show-vinyl.jpg";
 import community from "@/assets/community.jpg";
 import { EqBars } from "@/components/eq-bars";
 import { usePlayer } from "@/components/player-context";
-import { FacebookIcon, SOCIAL_HANDLE, SOCIALS, TikTokIcon } from "@/lib/socials";
+import { SOCIAL_HANDLE, SOCIALS, TwitterIcon } from "@/lib/socials";
 import {
   SITE_URL,
   SOCIAL_IMAGE_ALT,
