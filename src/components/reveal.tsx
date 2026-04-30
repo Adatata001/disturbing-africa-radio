@@ -7,8 +7,6 @@ type RevealProps = {
   direction?: "up" | "left" | "right" | "none";
   /** Delay in ms */
   delay?: number;
-  /** As which HTML element to render */
-  as?: keyof JSX.IntrinsicElements;
 };
 
 export function Reveal({
@@ -16,9 +14,8 @@ export function Reveal({
   className = "",
   direction = "up",
   delay = 0,
-  as: Tag = "div",
 }: RevealProps) {
-  const ref = React.useRef<HTMLElement | null>(null);
+  const ref = React.useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = React.useState(false);
 
   React.useEffect(() => {
@@ -53,8 +50,7 @@ export function Reveal({
           : "";
 
   return (
-    <Tag
-      // @ts-expect-error generic ref typing for polymorphic element
+    <div
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
       className={`transition-all duration-700 ease-out will-change-transform ${
@@ -62,6 +58,6 @@ export function Reveal({
       } ${className}`}
     >
       {children}
-    </Tag>
+    </div>
   );
 }
