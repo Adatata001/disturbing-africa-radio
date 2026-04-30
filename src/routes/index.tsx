@@ -58,49 +58,49 @@ export const Route = createFileRoute("/")({
 const FEATURED_SHOWS = [
   {
     name: "New Music Monday",
-    host: "with New Music Monday",
+    host: "with Abraham Yusuf",
     schedule: "Monday",
     tag: "New Music",
     image: showMic,
   },
   {
     name: "Dancehall Riddim",
-    host: "with Dancehall Riddim",
+    host: "with Abraham Yusuf",
     schedule: "Tuesday",
     tag: "Dancehall",
     image: showVocal,
   },
   {
     name: "New Music Wednesday",
-    host: "with New Music Wednesday",
+    host: "with Abraham Yusuf",
     schedule: "Wednesday",
     tag: "New Music",
     image: showVinyl,
   },
   {
     name: "Throwback Thursday",
-    host: "with Throwback Thursday",
+    host: "with Abraham Yusuf",
     schedule: "Thursday",
     tag: "Throwback",
     image: showThrowback,
   },
   {
     name: "Hip Hop Friday",
-    host: "with Hip Hop Friday",
+    host: "with Abraham Yusuf",
     schedule: "Friday",
     tag: "Hip Hop",
     image: showHiphop,
   },
   {
     name: "Underground",
-    host: "with Underground",
+    host: "with Abraham Yusuf",
     schedule: "Saturday",
     tag: "Underground",
     image: showUnderground,
   },
   {
     name: "Sunday School",
-    host: "with Sunday School",
+    host: "with Abraham Yusuf",
     schedule: "Sunday",
     tag: "Sunday",
     image: showSunday,
@@ -176,7 +176,7 @@ function HomePage() {
                 On Air Now
               </div>
               <div className="mt-2 display text-2xl font-black">New Music Monday</div>
-              <div className="text-sm text-muted-foreground">with New Music Monday</div>
+              <div className="text-sm text-muted-foreground">with Abraham Yusuf</div>
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
                 <span className="text-xs text-muted-foreground">New Music | Live</span>
                 <EqBars active={isPlaying} />

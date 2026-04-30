@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, MapPin, Clock, Radio } from "lucide-react";
+import { Instagram, MapPin, Clock } from "lucide-react";
 import { SOCIAL_HANDLE, SOCIALS, TwitterIcon } from "@/lib/socials";
 import { Reveal } from "@/components/reveal";
 
@@ -9,10 +9,19 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-4">
         <Reveal direction="up" className="md:col-span-2">
           <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-primary-foreground">
-              <Radio className="h-5 w-5" />
+            <img
+              src="/disturbing-africa-logo.png"
+              alt="Disturbing Africa Radio"
+              className="h-10 w-auto"
+            />
+            <div className="leading-tight">
+              <div className="display text-base tracking-tight text-foreground">
+                Disturbing Africa
+              </div>
+              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary">
+                Radio
+              </div>
             </div>
-            <div className="display text-lg">Disturbing Africa Radio</div>
           </div>
           <p className="mt-4 max-w-md text-sm text-muted-foreground">
             Afro Fusion radio broadcasting the latest and freshest from the mainstream
