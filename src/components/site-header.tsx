@@ -31,7 +31,7 @@ export function SiteHeader() {
             className="h-10 w-auto"
           />
           <div className="leading-tight">
-            <div className="display text-base font-black tracking-tight text-foreground">
+            <div className="display text-base tracking-tight text-foreground">
               Disturbing Africa
             </div>
             <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary">

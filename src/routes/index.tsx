@@ -155,7 +155,7 @@ function HomePage() {
 
       <section className="border-y border-border bg-primary text-primary-foreground">
         <div className="overflow-hidden py-6">
-          <div className="flex w-max animate-marquee items-center gap-8 whitespace-nowrap text-2xl font-black uppercase tracking-tight sm:text-3xl">
+          <div className="flex w-max animate-marquee items-center gap-8 whitespace-nowrap text-2xl font-semibold uppercase tracking-tight sm:text-3xl">
             {Array.from({ length: 2 }).map((_, i) => (
               <div key={i} className="flex items-center gap-8 pr-8">
                 <span>Spread the Influence of African Underground Genres</span>
