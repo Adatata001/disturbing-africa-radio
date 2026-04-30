@@ -53,25 +53,53 @@ export const Route = createFileRoute("/")({
 
 const FEATURED_SHOWS = [
   {
-    name: "Underground Frequencies",
-    host: "with DJ Adisa",
-    schedule: "Mon - Fri | 8 PM",
-    tag: "Afro House",
+    name: "New Music Monday",
+    host: "with New Music Monday",
+    schedule: "Monday",
+    tag: "New Music",
     image: showMic,
   },
   {
-    name: "Voices Of The Continent",
-    host: "with Amara K.",
-    schedule: "Wed | 6 PM",
-    tag: "Talk + Live",
+    name: "Dancehall Riddim",
+    host: "with Dancehall Riddim",
+    schedule: "Tuesday",
+    tag: "Dancehall",
     image: showVocal,
   },
   {
-    name: "Crate Diggers",
-    host: "with Selecta Bem",
-    schedule: "Sat | 10 PM",
-    tag: "Vinyl Sets",
+    name: "New Music Wednesday",
+    host: "with New Music Wednesday",
+    schedule: "Wednesday",
+    tag: "New Music",
     image: showVinyl,
+  },
+  {
+    name: "Throwback Thursday",
+    host: "with Throwback Thursday",
+    schedule: "Thursday",
+    tag: "Throwback",
+    image: showMic,
+  },
+  {
+    name: "Hip Hop Friday",
+    host: "with Hip Hop Friday",
+    schedule: "Friday",
+    tag: "Hip Hop",
+    image: showVocal,
+  },
+  {
+    name: "Underground",
+    host: "with Underground",
+    schedule: "Saturday",
+    tag: "Underground",
+    image: showVinyl,
+  },
+  {
+    name: "Sunday School",
+    host: "with Sunday School",
+    schedule: "Sunday",
+    tag: "Sunday",
+    image: showMic,
   },
 ] as const;
 
@@ -143,10 +171,10 @@ function HomePage() {
               <div className="text-[11px] font-bold uppercase tracking-widest text-primary">
                 On Air Now
               </div>
-              <div className="mt-2 display text-2xl font-black">Underground Frequencies</div>
-              <div className="text-sm text-muted-foreground">with DJ Adisa</div>
+              <div className="mt-2 display text-2xl font-black">New Music Monday</div>
+              <div className="text-sm text-muted-foreground">with New Music Monday</div>
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
-                <span className="text-xs text-muted-foreground">Afro House | Live</span>
+                <span className="text-xs text-muted-foreground">New Music | Live</span>
                 <EqBars active={isPlaying} />
               </div>
             </div>
@@ -304,7 +332,9 @@ function HomePage() {
                 Instagram and Twitter to keep independent African radio on air.
               </p>
               <a
-                href="#"
+                href="https://wa.me/message/NVRPGGVQ57L2F1"
+                target="_blank"
+                rel="noreferrer"
                 className="mt-4 inline-flex animate-gentle-bounce items-center gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-primary"
               >
                 <HeartHandshake className="h-4 w-4" /> Tip the Studio
