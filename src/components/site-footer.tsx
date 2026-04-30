@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, MapPin, Clock, Radio } from "lucide-react";
 import { SOCIAL_HANDLE, SOCIALS, TwitterIcon } from "@/lib/socials";
+import { Reveal } from "@/components/reveal";
 
 export function SiteFooter() {
   return (
