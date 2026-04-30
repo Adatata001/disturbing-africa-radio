@@ -29,7 +29,7 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --font-display: "Anton", "Impact", system-ui, sans-serif;
+  --font-display: "Bebas Neue", "Impact", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
@@ -97,8 +97,9 @@
   h3,
   .display {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
     text-transform: uppercase;
+    font-weight: 400;
   }
 }
 
@@ -131,4 +132,12 @@
 }
 .animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+@keyframes gentle-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.animate-gentle-bounce {
+  animation: gentle-bounce 1.6s ease-in-out infinite;
 }
