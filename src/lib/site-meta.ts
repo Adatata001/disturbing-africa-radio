@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = "https://disturbing-africa-radio.netlify.app";
+const DEFAULT_SITE_URL = "https://disturbing-africa-radio.lovable.app";
 
 export const SITE_URL =
   import.meta.env.VITE_SITE_URL?.replace(/\/+$/, "") || DEFAULT_SITE_URL;

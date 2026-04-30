@@ -7,6 +7,7 @@ import showVinyl from "@/assets/show-vinyl.jpg";
 import community from "@/assets/community.jpg";
 import { EqBars } from "@/components/eq-bars";
 import { usePlayer } from "@/components/player-context";
+import { Reveal } from "@/components/reveal";
 import { SOCIAL_HANDLE, SOCIALS, TwitterIcon } from "@/lib/socials";
 import {
   SITE_URL,
@@ -189,30 +190,31 @@ function HomePage() {
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {FEATURED_SHOWS.map((show) => (
-            <article
-              key={show.name}
-              className="overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/60"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img
-                  src={show.image}
-                  alt={show.name}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-                <span className="absolute left-3 top-3 rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary-foreground">
-                  {show.tag}
-                </span>
-              </div>
-              <div className="p-5">
-                <div className="text-xs font-bold uppercase tracking-widest text-secondary">
-                  {show.schedule}
+          {FEATURED_SHOWS.map((show, i) => (
+            <Reveal key={show.name} direction="up" delay={i * 120}>
+              <article
+                className="overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/60"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={show.image}
+                    alt={show.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                  <span className="absolute left-3 top-3 rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary-foreground">
+                    {show.tag}
+                  </span>
                 </div>
-                <h3 className="display mt-2 text-2xl font-black">{show.name}</h3>
-                <div className="mt-1 text-sm text-muted-foreground">{show.host}</div>
-              </div>
-            </article>
+                <div className="p-5">
+                  <div className="text-xs font-bold uppercase tracking-widest text-secondary">
+                    {show.schedule}
+                  </div>
+                  <h3 className="display mt-2 text-2xl font-black">{show.name}</h3>
+                  <div className="mt-1 text-sm text-muted-foreground">{show.host}</div>
+                </div>
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -220,7 +222,7 @@ function HomePage() {
       <section className="border-y border-border bg-card/40">
         <div className="mx-auto max-w-7xl px-4 py-20">
           <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-4">
+            <Reveal direction="left" className="lg:col-span-4">
               <div className="text-xs font-bold uppercase tracking-widest text-secondary">
                 What we stand for
               </div>
@@ -232,18 +234,19 @@ function HomePage() {
               <p className="mt-4 max-w-md text-sm text-muted-foreground">
                 Our core values keep the signal pure - from selection to broadcast.
               </p>
-            </div>
+            </Reveal>
             <ul className="grid gap-3 sm:grid-cols-2 lg:col-span-8">
               {VALUES.map((value, i) => (
-                <li
-                  key={value}
-                  className="flex items-start gap-3 rounded-lg border border-border bg-background/40 p-4 transition-colors hover:border-primary/40"
-                >
-                  <span className="display flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary text-sm font-black text-primary-foreground">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="pt-1.5 text-sm font-semibold text-foreground">{value}</span>
-                </li>
+                <Reveal key={value} direction="right" delay={i * 60}>
+                  <li
+                    className="flex items-start gap-3 rounded-lg border border-border bg-background/40 p-4 transition-colors hover:border-primary/40"
+                  >
+                    <span className="display flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary text-sm font-black text-primary-foreground">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="pt-1.5 text-sm font-semibold text-foreground">{value}</span>
+                  </li>
+                </Reveal>
               ))}
             </ul>
           </div>
@@ -252,7 +255,7 @@ function HomePage() {
 
       <section className="mx-auto max-w-7xl px-4 py-20">
         <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div className="relative overflow-hidden rounded-xl border border-border">
+          <Reveal direction="left" className="relative overflow-hidden rounded-xl border border-border">
             <img
               src={community}
               alt="Crowd at an underground music event with green and yellow stage lights"
@@ -261,8 +264,8 @@ function HomePage() {
               height={1000}
               className="h-full w-full object-cover"
             />
-          </div>
-          <div>
+          </Reveal>
+          <Reveal direction="right">
             <div className="text-xs font-bold uppercase tracking-widest text-secondary">
               Our vision
             </div>
@@ -282,7 +285,7 @@ function HomePage() {
             >
               Read our story <ArrowRight className="h-4 w-4" />
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
 
