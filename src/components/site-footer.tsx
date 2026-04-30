@@ -7,7 +7,7 @@ export function SiteFooter() {
   return (
     <footer className="mt-24 border-t border-border bg-card/40">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-4">
-        <div className="md:col-span-2">
+        <Reveal direction="up" className="md:col-span-2">
           <div className="flex items-center gap-2">
             <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-primary-foreground">
               <Radio className="h-5 w-5" />
@@ -23,9 +23,9 @@ export function SiteFooter() {
             Follow us on Instagram and Twitter as{" "}
             <span className="font-semibold text-foreground">{SOCIAL_HANDLE}</span>.
           </p>
-        </div>
+        </Reveal>
 
-        <div>
+        <Reveal direction="up" delay={100}>
           <div className="text-xs font-semibold uppercase tracking-widest text-primary">Visit</div>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
             <li className="flex gap-2">
@@ -57,9 +57,9 @@ export function SiteFooter() {
               <TwitterIcon className="h-4 w-4" />
             </a>
           </div>
-        </div>
+        </Reveal>
 
-        <div>
+        <Reveal direction="up" delay={200}>
           <div className="text-xs font-semibold uppercase tracking-widest text-primary">Explore</div>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
@@ -83,7 +83,7 @@ export function SiteFooter() {
               </Link>
             </li>
           </ul>
-        </div>
+        </Reveal>
       </div>
 
       <div className="border-t border-border">
