@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { BadgeCheck } from "lucide-react";
 import community from "@/assets/community.jpg";
+import { Reveal } from "@/components/reveal";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
