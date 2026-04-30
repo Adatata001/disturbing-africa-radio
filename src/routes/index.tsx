@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, HeartHandshake, Instagram, Sparkles } from "lucide-react";
+import * as React from "react";
 import heroDj from "@/assets/hero-dj.jpg";
 import showHiphop from "@/assets/show-hiphop.jpg";
 import showMic from "@/assets/show-mic.jpg";
@@ -107,6 +108,37 @@ const FEATURED_SHOWS = [
   },
 ] as const;
 
+type FeaturedShow = (typeof FEATURED_SHOWS)[number];
+type ShowDay = FeaturedShow["schedule"];
+
+const DEFAULT_SHOW = FEATURED_SHOWS[0];
+const WAT_TIME_ZONE = "Africa/Lagos";
+
+function getWatShow(date = new Date()): FeaturedShow {
+  const day = new Intl.DateTimeFormat("en-US", {
+    timeZone: WAT_TIME_ZONE,
+    weekday: "long",
+  }).format(date) as ShowDay;
+
+  return FEATURED_SHOWS.find((show) => show.schedule === day) || DEFAULT_SHOW;
+}
+
+function getMsUntilNextWatMidnight(date = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: WAT_TIME_ZONE,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(date);
+  const value = (type: string) => Number(parts.find((part) => part.type === type)?.value || 0);
+  const msIntoDay =
+    ((value("hour") * 60 + value("minute")) * 60 + value("second")) * 1000 +
+    date.getMilliseconds();
+
+  return 24 * 60 * 60 * 1000 - msIntoDay + 1000;
+}
+
 const VALUES = [
   "Bold Curations - No Safe Playlists",
   "African Sound Diversity",
@@ -122,6 +154,20 @@ const VALUES = [
 
 function HomePage() {
   const { isPlaying, toggle } = usePlayer();
+  const [currentShow, setCurrentShow] = React.useState(() => getWatShow());
+
+  React.useEffect(() => {
+    let timeoutId: number;
+
+    const scheduleNextUpdate = () => {
+      setCurrentShow(getWatShow());
+      timeoutId = window.setTimeout(scheduleNextUpdate, getMsUntilNextWatMidnight());
+    };
+
+    scheduleNextUpdate();
+
+    return () => window.clearTimeout(timeoutId);
+  }, []);
 
   return (
     <div>
@@ -175,10 +221,10 @@ function HomePage() {
               <div className="text-[11px] font-bold uppercase tracking-widest text-primary">
                 On Air Now
               </div>
-              <div className="mt-2 display text-2xl font-black">New Music Monday</div>
+              <div className="mt-2 display text-2xl font-black">{currentShow.name}</div>
               <div className="text-sm text-muted-foreground">with Abraham Yusuf</div>
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
-                <span className="text-xs text-muted-foreground">New Music | Live</span>
+                <span className="text-xs text-muted-foreground">{currentShow.tag} | Live</span>
                 <EqBars active={isPlaying} />
               </div>
             </div>
