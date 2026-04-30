@@ -3,6 +3,7 @@ import { MapPin, Clock, Instagram, Mail } from "lucide-react";
 import * as React from "react";
 import { isOpenNow } from "@/lib/hours";
 import { SOCIAL_HANDLE, SOCIALS, TwitterIcon } from "@/lib/socials";
+import { Reveal } from "@/components/reveal";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
