@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MapPin, Clock, HeartHandshake, Instagram, Mail } from "lucide-react";
+import { MapPin, Clock, Instagram, Mail } from "lucide-react";
 import * as React from "react";
 import { isOpenNow } from "@/lib/hours";
-import { FacebookIcon, SOCIAL_HANDLE, SOCIALS, TikTokIcon } from "@/lib/socials";
+import { SOCIAL_HANDLE, SOCIALS, TwitterIcon } from "@/lib/socials";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -11,7 +11,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Visit Disturbing Africa Radio at C10 Bugai Street, Makera, Kaduna. Open daily 5AM - 12AM. Connect via TikTok, Instagram, and Facebook.",
+          "Visit Disturbing Africa Radio at C10 Bugai Street, Makera, Kaduna. Open daily 5AM - 12AM. Connect via Instagram and Twitter.",
       },
       { property: "og:title", content: "Contact - Disturbing Africa Radio" },
       {
@@ -37,10 +37,10 @@ function ContactPage() {
     <div>
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-4 py-16">
-          <div className="text-xs font-bold uppercase tracking-widest text-secondary">
+          <div className="text-xs font-semibold uppercase tracking-widest text-secondary">
             Get in touch
           </div>
-          <h1 className="display mt-2 text-5xl font-black sm:text-6xl">
+          <h1 className="display mt-2 text-5xl sm:text-6xl">
             Visit the <span className="text-gradient-brand">studio.</span>
           </h1>
           <p className="mt-4 max-w-xl text-muted-foreground">
@@ -58,12 +58,10 @@ function ContactPage() {
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold uppercase tracking-widest text-secondary">
+                  <div className="text-xs font-semibold uppercase tracking-widest text-secondary">
                     Studio Address
                   </div>
-                  <div className="mt-1 display text-xl font-black">
-                    C10 Bugai Street, Makera
-                  </div>
+                  <div className="mt-1 display text-xl">C10 Bugai Street, Makera</div>
                   <div className="text-sm text-muted-foreground">Kaduna, Nigeria</div>
                 </div>
               </div>
@@ -75,14 +73,14 @@ function ContactPage() {
                   <Clock className="h-5 w-5" />
                 </div>
                 <div className="flex-1">
-                  <div className="text-xs font-bold uppercase tracking-widest text-secondary">
+                  <div className="text-xs font-semibold uppercase tracking-widest text-secondary">
                     On Air Hours
                   </div>
-                  <div className="mt-1 display text-xl font-black">5:00 AM - 12:00 AM</div>
+                  <div className="mt-1 display text-xl">5:00 AM - 12:00 AM</div>
                   <div className="text-sm text-muted-foreground">Daily, all week</div>
                 </div>
                 <span
-                  className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest ${
+                  className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest ${
                     openNow
                       ? "border-secondary/40 bg-secondary/10 text-secondary"
                       : "border-border bg-muted text-muted-foreground"
@@ -102,12 +100,12 @@ function ContactPage() {
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold uppercase tracking-widest text-secondary">
+                  <div className="text-xs font-semibold uppercase tracking-widest text-secondary">
                     Email
                   </div>
                   <a
                     href="mailto:madeinafricastudio04@gmail.com"
-                    className="mt-1 block display text-xl font-black text-foreground hover:text-primary"
+                    className="mt-1 block display text-xl text-foreground hover:text-primary"
                   >
                     madeinafricastudio04@gmail.com
                   </a>
@@ -115,30 +113,12 @@ function ContactPage() {
               </div>
             </div>
 
-            <div className="grid gap-3">
-              <a
-                href={SOCIALS.tipjar}
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-4 text-sm font-bold uppercase tracking-wider text-primary-foreground"
-              >
-                <HeartHandshake className="h-4 w-4" /> Tip the Studio
-              </a>
-            </div>
-
             <div className="text-sm text-muted-foreground">
-              Find us on TikTok, Instagram, and Facebook as{" "}
+              Find us on Instagram and Twitter as{" "}
               <span className="font-semibold text-foreground">{SOCIAL_HANDLE}</span>.
             </div>
 
             <div className="flex gap-2">
-              <a
-                href={SOCIALS.tiktok}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="TikTok"
-                className="rounded-md border border-border p-3 hover:border-primary hover:text-primary"
-              >
-                <TikTokIcon className="h-5 w-5" />
-              </a>
               <a
                 href={SOCIALS.instagram}
                 target="_blank"
@@ -149,13 +129,13 @@ function ContactPage() {
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href={SOCIALS.facebook}
+                href={SOCIALS.twitter}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Facebook"
+                aria-label="Twitter"
                 className="rounded-md border border-border p-3 hover:border-primary hover:text-primary"
               >
-                <FacebookIcon className="h-5 w-5" />
+                <TwitterIcon className="h-5 w-5" />
               </a>
             </div>
           </div>

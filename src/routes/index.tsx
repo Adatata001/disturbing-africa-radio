@@ -123,7 +123,7 @@ function HomePage() {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <button
                 onClick={toggle}
-                className="inline-flex items-center gap-3 rounded-md bg-primary px-6 py-3.5 text-sm font-black uppercase tracking-wider text-primary-foreground shadow-[var(--shadow-glow)]"
+                className="inline-flex animate-gentle-bounce items-center gap-3 rounded-md bg-primary px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-primary-foreground shadow-[var(--shadow-glow)]"
               >
                 {isPlaying ? "Now Playing" : "Listen Live"}
                 <EqBars active={isPlaying} className="h-4" />
@@ -290,48 +290,39 @@ function HomePage() {
         <div className="overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/15 via-background to-secondary/15 p-8 sm:p-12">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <div className="max-w-xl">
-              <div className="text-xs font-bold uppercase tracking-widest text-secondary">
+              <div className="text-xs font-semibold uppercase tracking-widest text-secondary">
                 Follow the movement
               </div>
-              <h2 className="display mt-2 text-3xl font-black sm:text-4xl">
+              <h2 className="display mt-2 text-3xl sm:text-4xl">
                 Support the signal. Power the sound.
               </h2>
               <p className="mt-3 text-sm text-muted-foreground">
                 Follow <span className="font-semibold text-foreground">{SOCIAL_HANDLE}</span> on
-                TikTok, Instagram, and Facebook, or tip the studio to keep independent
-                African radio on air.
+                Instagram and Twitter to keep independent African radio on air.
               </p>
+              <a
+                href="#"
+                className="mt-4 inline-flex animate-gentle-bounce items-center gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-primary"
+              >
+                <HeartHandshake className="h-4 w-4" /> Tip the Studio
+              </a>
             </div>
             <div className="flex flex-wrap gap-3">
-              <a
-                href={SOCIALS.tiktok}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-md border border-border bg-background/70 px-5 py-3 text-sm font-bold uppercase tracking-wider text-foreground hover:border-primary hover:text-primary"
-              >
-                <TikTokIcon className="h-4 w-4" /> TikTok
-              </a>
               <a
                 href={SOCIALS.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-md border border-border bg-background/70 px-5 py-3 text-sm font-bold uppercase tracking-wider text-foreground hover:border-primary hover:text-primary"
+                className="inline-flex items-center gap-2 rounded-md border border-border bg-background/70 px-5 py-3 text-sm font-semibold uppercase tracking-wider text-foreground hover:border-primary hover:text-primary"
               >
                 <Instagram className="h-4 w-4" /> Instagram
               </a>
               <a
-                href={SOCIALS.facebook}
+                href={SOCIALS.twitter}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-md border border-border bg-background/70 px-5 py-3 text-sm font-bold uppercase tracking-wider text-foreground hover:border-primary hover:text-primary"
+                className="inline-flex items-center gap-2 rounded-md border border-border bg-background/70 px-5 py-3 text-sm font-semibold uppercase tracking-wider text-foreground hover:border-primary hover:text-primary"
               >
-                <FacebookIcon className="h-4 w-4" /> Facebook
-              </a>
-              <a
-                href={SOCIALS.tipjar}
-                className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-bold uppercase tracking-wider text-primary-foreground"
-              >
-                <HeartHandshake className="h-4 w-4" /> Tip the Studio
+                <TwitterIcon className="h-4 w-4" /> Twitter
               </a>
             </div>
           </div>
