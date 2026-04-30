@@ -1,7 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, HeartHandshake, Instagram, Sparkles } from "lucide-react";
 import heroDj from "@/assets/hero-dj.jpg";
+import showHiphop from "@/assets/show-hiphop.jpg";
 import showMic from "@/assets/show-mic.jpg";
+import showSunday from "@/assets/show-sunday.jpg";
+import showThrowback from "@/assets/show-throwback.jpg";
+import showUnderground from "@/assets/show-underground.jpg";
 import showVocal from "@/assets/show-vocal.jpg";
 import showVinyl from "@/assets/show-vinyl.jpg";
 import community from "@/assets/community.jpg";
@@ -78,28 +82,28 @@ const FEATURED_SHOWS = [
     host: "with Throwback Thursday",
     schedule: "Thursday",
     tag: "Throwback",
-    image: showMic,
+    image: showThrowback,
   },
   {
     name: "Hip Hop Friday",
     host: "with Hip Hop Friday",
     schedule: "Friday",
     tag: "Hip Hop",
-    image: showVocal,
+    image: showHiphop,
   },
   {
     name: "Underground",
     host: "with Underground",
     schedule: "Saturday",
     tag: "Underground",
-    image: showVinyl,
+    image: showUnderground,
   },
   {
     name: "Sunday School",
     host: "with Sunday School",
     schedule: "Sunday",
     tag: "Sunday",
-    image: showMic,
+    image: showSunday,
   },
 ] as const;
 
