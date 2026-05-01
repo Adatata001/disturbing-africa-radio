@@ -39,7 +39,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
             <li className="flex gap-2">
               <MapPin className="h-4 w-4 shrink-0 text-secondary" />
-              <span>C10 Bugai Street, Makera, Kaduna</span>
+              <span>120 End Street, Doornfontein, Johannesburg</span>
             </li>
             <li className="flex gap-2">
               <Clock className="h-4 w-4 shrink-0 text-secondary" />
@@ -102,11 +102,7 @@ export function SiteFooter() {
             <span className="font-semibold text-foreground">Dstrb Afrik Global LTD</span>.
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-1">
-            <span>CEO - Abraham Yusuf</span>
-            <span className="inline-flex items-center gap-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
-              Certified 9 / 10 / 25
-            </span>
+            <span>120 End Street, Doornfontein, Johannesburg</span>
           </div>
         </div>
       </div>

@@ -84,9 +84,9 @@ function ShowsPage() {
                     </td>
                     <td className="p-3 align-top">
                       <div className="rounded-md border border-secondary/30 bg-secondary/10 p-3 transition-colors">
-                        <div className="text-xs font-bold text-foreground">Abraham Yusuf</div>
+                        <div className="text-xs font-bold text-foreground">Disturbing Africa Radio</div>
                         <div className="mt-0.5 text-[11px] text-muted-foreground">
-                          Presenter
+                          Resident DJ
                         </div>
                       </div>
                     </td>

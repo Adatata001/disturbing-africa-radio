@@ -196,7 +196,7 @@ function HomePage() {
             </h1>
             <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
               The freshest cuts from Africa&apos;s mainstream and underground -
-              broadcasting bold, unfiltered sound from Kaduna to the diaspora.
+              broadcasting bold, unfiltered sound from Johannesburg to the diaspora.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">

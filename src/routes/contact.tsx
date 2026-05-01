@@ -12,7 +12,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Visit Disturbing Africa Radio at C10 Bugai Street, Makera, Kaduna. Open daily 5AM - 12AM. Connect via Instagram and Twitter.",
+          "Visit Disturbing Africa Radio at 120 End Street, Doornfontein, Johannesburg. Open daily 5AM - 12AM. Connect via Instagram and Twitter.",
       },
       { property: "og:title", content: "Contact - Disturbing Africa Radio" },
       {
@@ -46,7 +46,7 @@ function ContactPage() {
               Visit the <span className="text-gradient-brand">studio.</span>
             </h1>
             <p className="mt-4 max-w-xl text-muted-foreground">
-              Drop a line, follow us on social, or come find us in Kaduna.
+              Drop a line, follow us on social, or come find us in Johannesburg.
             </p>
           </Reveal>
         </div>
@@ -65,8 +65,8 @@ function ContactPage() {
                     <div className="text-xs font-semibold uppercase tracking-widest text-secondary">
                       Studio Address
                     </div>
-                    <div className="mt-1 display text-xl">C10 Bugai Street, Makera</div>
-                    <div className="text-sm text-muted-foreground">Kaduna, Nigeria</div>
+                    <div className="mt-1 display text-xl">120 End Street, Doornfontein</div>
+                    <div className="text-sm text-muted-foreground">Johannesburg, South Africa</div>
                   </div>
                 </div>
               </div>
@@ -155,7 +155,7 @@ function ContactPage() {
             <div className="overflow-hidden rounded-xl border border-border bg-card">
               <iframe
                 title="Disturbing Africa Radio location"
-                src="https://www.google.com/maps?q=Makera,Kaduna,Nigeria&output=embed"
+                src="https://www.google.com/maps?q=120+End+Street,Doornfontein,Johannesburg,South+Africa&output=embed"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="h-full min-h-[400px] w-full grayscale invert-[0.85]"
