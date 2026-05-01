@@ -3,6 +3,7 @@ import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/r
 import appCss from "../styles.css?url";
 import { PlayerProvider } from "@/components/player-context";
 import { LivePlayerBar } from "@/components/live-player";
+import { CookieConsent } from "@/components/cookie-consent";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import {
@@ -117,6 +118,7 @@ function RootComponent() {
         </main>
         <SiteFooter />
         <LivePlayerBar />
+        <CookieConsent />
       </div>
     </PlayerProvider>
   );
