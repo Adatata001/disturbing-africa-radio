@@ -45,16 +45,16 @@ export function LivePlayerBar() {
         <div
           ref={containerRef}
           data-type="newStreamPlayer"
-          data-publictoken="6c5ebe42-6006-4934-bf0a-b7351f2fed98"
+          data-publicToken="6c5ebe42-6006-4934-bf0a-b7351f2fed98"
           data-theme="light"
           data-color="e81e4d"
-          data-channelid=""
+          data-channelId=""
           data-rendered="false"
           className="cstrEmbed block w-full rounded-md border border-border bg-card p-2"
         >
-          <a href="https://www.caster.fm" className="sr-only">
-            Shoutcast Hosting
-          </a>
+          <a href="https://www.caster.fm">Shoutcast Hosting</a>{" "}
+          <a href="https://www.caster.fm">Stream Hosting</a>{" "}
+          <a href="https://www.caster.fm">Radio Server Hosting</a>
         </div>
       </div>
     </div>
