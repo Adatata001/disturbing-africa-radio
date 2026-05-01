@@ -222,7 +222,7 @@ function HomePage() {
                 On Air Now
               </div>
               <div className="mt-2 display text-2xl font-black">{currentShow.name}</div>
-              <div className="text-sm text-muted-foreground">with Abraham Yusuf</div>
+              <div className="text-sm text-muted-foreground">Live on air</div>
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
                 <span className="text-xs text-muted-foreground">{currentShow.tag} | Live</span>
                 <EqBars active={isPlaying} />
