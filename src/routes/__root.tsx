@@ -118,6 +118,7 @@ function RootComponent() {
         </main>
         <SiteFooter />
         <LivePlayerBar />
+        <CookieConsent />
       </div>
     </PlayerProvider>
   );
