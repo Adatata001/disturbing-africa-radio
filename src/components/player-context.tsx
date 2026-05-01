@@ -1,8 +1,7 @@
 import * as React from "react";
 
-// Stream is now served by the embedded Caster.fm widget (see LivePlayerBar).
-// This context is kept as a lightweight stub so existing UI (Listen Live button,
-// EQ bars) keeps working — toggling simply scrolls focus to the live player.
+export const CASTER_PLAYER_URL =
+  "https://widgets.cloud.caster.fm/player/?token=6c5ebe42-6006-4934-bf0a-b7351f2fed98&theme=dark&color=f5d000";
 
 type PlayerCtx = {
   isPlaying: boolean;
@@ -15,18 +14,19 @@ type PlayerCtx = {
 const Ctx = React.createContext<PlayerCtx | null>(null);
 
 export function PlayerProvider({ children }: { children: React.ReactNode }) {
-  const [isPlaying] = React.useState(false);
+  const [volume, setVolumeState] = React.useState(0.8);
 
   const toggle = React.useCallback(() => {
     if (typeof window === "undefined") return;
-    const el = document.getElementById("live-player");
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "end" });
+    window.open(CASTER_PLAYER_URL, "disturbing-africa-player", "popup,width=420,height=720");
   }, []);
 
-  const setVolume = React.useCallback(() => {}, []);
+  const setVolume = React.useCallback((v: number) => {
+    setVolumeState(v);
+  }, []);
 
   return (
-    <Ctx.Provider value={{ isPlaying, isLoading: false, volume: 1, toggle, setVolume }}>
+    <Ctx.Provider value={{ isPlaying: false, isLoading: false, volume, toggle, setVolume }}>
       {children}
     </Ctx.Provider>
   );
