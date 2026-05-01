@@ -1,6 +1,8 @@
 import * as React from "react";
 
-export const STREAM_URL = "/disturbing-africa-test-audio.wav";
+// Stream is now served by the embedded Caster.fm widget (see LivePlayerBar).
+// This context is kept as a lightweight stub so existing UI (Listen Live button,
+// EQ bars) keeps working — toggling simply scrolls focus to the live player.
 
 type PlayerCtx = {
   isPlaying: boolean;
@@ -13,99 +15,18 @@ type PlayerCtx = {
 const Ctx = React.createContext<PlayerCtx | null>(null);
 
 export function PlayerProvider({ children }: { children: React.ReactNode }) {
-  const audioRef = React.useRef<HTMLAudioElement | null>(null);
-  const [isPlaying, setIsPlaying] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [volume, setVolumeState] = React.useState(0.8);
-
-  React.useEffect(() => {
-    const audio = new Audio();
-    audio.preload = "metadata";
-    audio.crossOrigin = "anonymous";
-    audio.volume = volume;
-    audioRef.current = audio;
-
-    const onPlay = () => setIsPlaying(true);
-    const onPause = () => setIsPlaying(false);
-    const onEnded = () => {
-      setIsLoading(false);
-      setIsPlaying(false);
-    };
-    const onWaiting = () => setIsLoading(true);
-    const onPlaying = () => setIsLoading(false);
-    const onError = () => {
-      setIsLoading(false);
-      setIsPlaying(false);
-    };
-
-    audio.addEventListener("play", onPlay);
-    audio.addEventListener("pause", onPause);
-    audio.addEventListener("ended", onEnded);
-    audio.addEventListener("waiting", onWaiting);
-    audio.addEventListener("playing", onPlaying);
-    audio.addEventListener("error", onError);
-
-    // Attempt autoplay on load. Browsers may block until user interacts.
-    audio.src = STREAM_URL + "?t=" + Date.now();
-    setIsLoading(true);
-    const attempt = audio.play();
-    if (attempt && typeof attempt.catch === "function") {
-      attempt.catch(() => {
-        setIsLoading(false);
-        setIsPlaying(false);
-        // Fallback: start on first user interaction anywhere on the page.
-        const resume = () => {
-          audio.play().catch(() => {});
-          window.removeEventListener("pointerdown", resume);
-          window.removeEventListener("keydown", resume);
-        };
-        window.addEventListener("pointerdown", resume, { once: true });
-        window.addEventListener("keydown", resume, { once: true });
-      });
-    }
-
-    return () => {
-      audio.pause();
-      audio.removeEventListener("play", onPlay);
-      audio.removeEventListener("pause", onPause);
-      audio.removeEventListener("ended", onEnded);
-      audio.removeEventListener("waiting", onWaiting);
-      audio.removeEventListener("playing", onPlaying);
-      audio.removeEventListener("error", onError);
-      audioRef.current = null;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [isPlaying] = React.useState(false);
 
   const toggle = React.useCallback(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (audio.paused) {
-      // Reload on each play so the latest local test file is used.
-      audio.src = STREAM_URL + "?t=" + Date.now();
-      setIsLoading(true);
-      audio.play().catch(() => {
-        setIsLoading(false);
-        setIsPlaying(false);
-      });
-      return;
-    }
-
-    audio.pause();
-    audio.removeAttribute("src");
-    audio.load();
+    if (typeof window === "undefined") return;
+    const el = document.getElementById("live-player");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "end" });
   }, []);
 
-  const setVolume = React.useCallback((v: number) => {
-    setVolumeState(v);
-    if (audioRef.current) {
-      audioRef.current.volume = v;
-    }
-  }, []);
+  const setVolume = React.useCallback(() => {}, []);
 
   return (
-    <Ctx.Provider value={{ isPlaying, isLoading, volume, toggle, setVolume }}>
+    <Ctx.Provider value={{ isPlaying, isLoading: false, volume: 1, toggle, setVolume }}>
       {children}
     </Ctx.Provider>
   );
@@ -113,8 +34,6 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
 
 export function usePlayer() {
   const v = React.useContext(Ctx);
-  if (!v) {
-    throw new Error("usePlayer must be used within PlayerProvider");
-  }
+  if (!v) throw new Error("usePlayer must be used within PlayerProvider");
   return v;
 }

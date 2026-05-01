@@ -59,49 +59,49 @@ export const Route = createFileRoute("/")({
 const FEATURED_SHOWS = [
   {
     name: "New Music Monday",
-    host: "with Abraham Yusuf",
+    host: "Disturbing Africa Radio",
     schedule: "Monday",
     tag: "New Music",
     image: showMic,
   },
   {
     name: "Dancehall Riddim",
-    host: "with Abraham Yusuf",
+    host: "Disturbing Africa Radio",
     schedule: "Tuesday",
     tag: "Dancehall",
     image: showVocal,
   },
   {
     name: "New Music Wednesday",
-    host: "with Abraham Yusuf",
+    host: "Disturbing Africa Radio",
     schedule: "Wednesday",
     tag: "New Music",
     image: showVinyl,
   },
   {
     name: "Throwback Thursday",
-    host: "with Abraham Yusuf",
+    host: "Disturbing Africa Radio",
     schedule: "Thursday",
     tag: "Throwback",
     image: showThrowback,
   },
   {
     name: "Hip Hop Friday",
-    host: "with Abraham Yusuf",
+    host: "Disturbing Africa Radio",
     schedule: "Friday",
     tag: "Hip Hop",
     image: showHiphop,
   },
   {
     name: "Underground",
-    host: "with Abraham Yusuf",
+    host: "Disturbing Africa Radio",
     schedule: "Saturday",
     tag: "Underground",
     image: showUnderground,
   },
   {
     name: "Sunday School",
-    host: "with Abraham Yusuf",
+    host: "Disturbing Africa Radio",
     schedule: "Sunday",
     tag: "Sunday",
     image: showSunday,
@@ -196,7 +196,7 @@ function HomePage() {
             </h1>
             <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
               The freshest cuts from Africa&apos;s mainstream and underground -
-              broadcasting bold, unfiltered sound from Kaduna to the diaspora.
+              broadcasting bold, unfiltered sound from Johannesburg to the diaspora.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -222,7 +222,7 @@ function HomePage() {
                 On Air Now
               </div>
               <div className="mt-2 display text-2xl font-black">{currentShow.name}</div>
-              <div className="text-sm text-muted-foreground">with Abraham Yusuf</div>
+              <div className="text-sm text-muted-foreground">Live on air</div>
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
                 <span className="text-xs text-muted-foreground">{currentShow.tag} | Live</span>
                 <EqBars active={isPlaying} />
@@ -294,40 +294,6 @@ function HomePage() {
               </article>
             </Reveal>
           ))}
-        </div>
-      </section>
-
-      <section className="border-y border-border bg-card/40">
-        <div className="mx-auto max-w-7xl px-4 py-20">
-          <div className="grid gap-10 lg:grid-cols-12">
-            <Reveal direction="left" className="lg:col-span-4">
-              <div className="text-xs font-bold uppercase tracking-widest text-secondary">
-                What we stand for
-              </div>
-              <h2 className="display mt-2 text-4xl font-black leading-[0.95] sm:text-5xl">
-                Ten rules.
-                <br />
-                <span className="text-primary">No compromises.</span>
-              </h2>
-              <p className="mt-4 max-w-md text-sm text-muted-foreground">
-                Our core values keep the signal pure - from selection to broadcast.
-              </p>
-            </Reveal>
-            <ul className="grid gap-3 sm:grid-cols-2 lg:col-span-8">
-              {VALUES.map((value, i) => (
-                <Reveal key={value} direction="right" delay={i * 60}>
-                  <li
-                    className="flex items-start gap-3 rounded-lg border border-border bg-background/40 p-4 transition-colors hover:border-primary/40"
-                  >
-                    <span className="display flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary text-sm font-black text-primary-foreground">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="pt-1.5 text-sm font-semibold text-foreground">{value}</span>
-                  </li>
-                </Reveal>
-              ))}
-            </ul>
-          </div>
         </div>
       </section>
 

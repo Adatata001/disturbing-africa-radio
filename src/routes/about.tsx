@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BadgeCheck } from "lucide-react";
 import community from "@/assets/community.jpg";
 import { Reveal } from "@/components/reveal";
 
@@ -112,34 +111,21 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* CEO + CERT */}
+      {/* SUBSIDIARY */}
       <section className="mx-auto max-w-7xl px-4 py-20">
-        <div className="grid gap-8 md:grid-cols-3">
-          <Reveal direction="left" className="md:col-span-2">
-            <div className="rounded-xl border border-border bg-gradient-to-br from-primary/10 via-card to-secondary/10 p-8">
-              <div className="text-xs font-bold uppercase tracking-widest text-secondary">
-                CEO Spotlight
-              </div>
-              <h3 className="display mt-2 text-4xl font-black">Abraham Yusuf</h3>
-              <p className="mt-4 max-w-xl text-muted-foreground">
-                Leading Disturbing Africa Radio with a vision to make African underground a
-                global standard — championing independent artists, bold programming and
-                uncompromising quality.
-              </p>
+        <Reveal direction="up">
+          <div className="rounded-xl border border-border bg-gradient-to-br from-primary/10 via-card to-secondary/10 p-8">
+            <div className="text-xs font-bold uppercase tracking-widest text-secondary">
+              The label behind the signal
             </div>
-          </Reveal>
-          <Reveal direction="right" delay={120}>
-            <div className="rounded-xl border border-border bg-card p-8">
-              <BadgeCheck className="h-8 w-8 text-secondary" />
-              <div className="display mt-3 text-2xl font-black">Certified</div>
-              <div className="text-sm text-muted-foreground">9 / 10 / 25</div>
-              <div className="mt-6 border-t border-border pt-4 text-xs text-muted-foreground">
-                A subsidiary of{" "}
-                <span className="font-bold text-foreground">Dstrb Afrik Global LTD</span>
-              </div>
-            </div>
-          </Reveal>
-        </div>
+            <h3 className="display mt-2 text-4xl font-black">Dstrb Afrik Global LTD</h3>
+            <p className="mt-4 max-w-2xl text-muted-foreground">
+              Disturbing Africa Radio is a subsidiary of Dstrb Afrik Global LTD —
+              championing independent African artists, bold programming and
+              uncompromising quality.
+            </p>
+          </div>
+        </Reveal>
       </section>
     </div>
   );
