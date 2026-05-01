@@ -16,6 +16,7 @@ const Ctx = React.createContext<PlayerCtx | null>(null);
 
 export function PlayerProvider({ children }: { children: React.ReactNode }) {
   const audioRef = React.useRef<HTMLAudioElement | null>(null);
+  const hasTriedAutoplayRef = React.useRef(false);
   const timeoutRef = React.useRef<number | null>(null);
   const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
   const [isPlaying, setIsPlaying] = React.useState(false);
@@ -39,6 +40,41 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     setIsLoading(false);
     setIsPlaying(false);
   }, [clearLoadTimeout]);
+
+  const start = React.useCallback(
+    (autoplay = false) => {
+      const audio = audioRef.current;
+      if (!audio) return;
+
+      setErrorMessage(null);
+      setIsLoading(true);
+      audio.src = `${STREAM_URL}?t=${Date.now()}`;
+
+      clearLoadTimeout();
+      timeoutRef.current = window.setTimeout(() => {
+        stop();
+        setErrorMessage("Audio could not be fetched. Please try again later.");
+      }, 15_000);
+
+      audio.play().catch((error: unknown) => {
+        clearLoadTimeout();
+        setIsLoading(false);
+        setIsPlaying(false);
+
+        if (
+          autoplay &&
+          error instanceof DOMException &&
+          error.name === "NotAllowedError"
+        ) {
+          setErrorMessage("Autoplay was blocked by your browser. Tap play to listen live.");
+          return;
+        }
+
+        setErrorMessage("Audio could not be fetched. Please try again later.");
+      });
+    },
+    [clearLoadTimeout, stop],
+  );
 
   React.useEffect(() => {
     const audio = new Audio();
@@ -72,6 +108,11 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     audio.addEventListener("error", onError);
     audio.addEventListener("stalled", onError);
 
+    if (!hasTriedAutoplayRef.current) {
+      hasTriedAutoplayRef.current = true;
+      window.setTimeout(() => start(true), 500);
+    }
+
     return () => {
       clearLoadTimeout();
       audio.pause();
@@ -83,7 +124,7 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
       audio.removeEventListener("stalled", onError);
       audioRef.current = null;
     };
-  }, [clearLoadTimeout, volume]);
+  }, [clearLoadTimeout, start, volume]);
 
   const toggle = React.useCallback(() => {
     const audio = audioRef.current;
@@ -94,23 +135,8 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    setErrorMessage(null);
-    setIsLoading(true);
-    audio.src = `${STREAM_URL}?t=${Date.now()}`;
-
-    clearLoadTimeout();
-    timeoutRef.current = window.setTimeout(() => {
-      stop();
-      setErrorMessage("Audio could not be fetched. Please try again later.");
-    }, 15_000);
-
-    audio.play().catch(() => {
-      clearLoadTimeout();
-      setIsLoading(false);
-      setIsPlaying(false);
-      setErrorMessage("Audio could not be fetched. Please try again later.");
-    });
-  }, [clearLoadTimeout, stop]);
+    start();
+  }, [start, stop]);
 
   const setVolume = React.useCallback((v: number) => {
     setVolumeState(v);
