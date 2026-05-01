@@ -41,16 +41,16 @@ export function LivePlayerBar() {
       id="live-player"
       className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80"
     >
-      <div className="mx-auto max-w-7xl px-2 py-2 sm:px-4">
+      <div className="mx-auto max-w-5xl px-2 py-1 sm:px-3">
         <div
           ref={containerRef}
           data-type="newStreamPlayer"
           data-publicToken="6c5ebe42-6006-4934-bf0a-b7351f2fed98"
-          data-theme="light"
-          data-color="e81e4d"
+          data-theme="dark"
+          data-color="f5d000"
           data-channelId=""
           data-rendered="false"
-          className="cstrEmbed block w-full rounded-md border border-border bg-card p-2"
+          className="cstrEmbed block w-full overflow-hidden rounded-md border border-border bg-card [&_iframe]:!h-12 [&_iframe]:!max-h-12 [&_iframe]:block [&_iframe]:w-full"
         >
           <a href="https://www.caster.fm">Shoutcast Hosting</a>{" "}
           <a href="https://www.caster.fm">Stream Hosting</a>{" "}
