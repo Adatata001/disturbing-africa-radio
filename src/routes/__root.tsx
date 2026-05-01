@@ -70,6 +70,11 @@ export const Route = createRootRoute({
       },
       { name: "twitter:image", content: SOCIAL_IMAGE_URL },
       { name: "twitter:image:alt", content: SOCIAL_IMAGE_ALT },
+      { name: "description", content: "Afro Fusion Live. Bold, underground, unfiltered. Listen live now" },
+      { property: "og:description", content: "Afro Fusion Live. Bold, underground, unfiltered. Listen live now" },
+      { name: "twitter:description", content: "Afro Fusion Live. Bold, underground, unfiltered. Listen live now" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8922a791-f8b6-4e71-82d9-2141cc7d7b5c/id-preview-0c58d4e8--05c102b6-4af0-40a3-90d5-cfd9999940b2.lovable.app-1777587273263.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8922a791-f8b6-4e71-82d9-2141cc7d7b5c/id-preview-0c58d4e8--05c102b6-4af0-40a3-90d5-cfd9999940b2.lovable.app-1777587273263.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
