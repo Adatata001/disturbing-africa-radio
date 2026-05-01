@@ -1,9 +1,10 @@
 import * as React from "react";
 
-export const CASTER_PLAYER_URL =
-  "https://widgets.cloud.caster.fm/player/?token=6c5ebe42-6006-4934-bf0a-b7351f2fed98&theme=dark&color=f5d000";
+export const STREAM_URL =
+  "https://morcast.caster.fm:14234/MsJiE;v=1c394c12057a23f801e415bee5777698";
 
 type PlayerCtx = {
+  errorMessage: string | null;
   isPlaying: boolean;
   isLoading: boolean;
   volume: number;
@@ -14,19 +15,110 @@ type PlayerCtx = {
 const Ctx = React.createContext<PlayerCtx | null>(null);
 
 export function PlayerProvider({ children }: { children: React.ReactNode }) {
+  const audioRef = React.useRef<HTMLAudioElement | null>(null);
+  const timeoutRef = React.useRef<number | null>(null);
+  const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [volume, setVolumeState] = React.useState(0.8);
 
-  const toggle = React.useCallback(() => {
-    if (typeof window === "undefined") return;
-    window.open(CASTER_PLAYER_URL, "disturbing-africa-player", "popup,width=420,height=720");
+  const clearLoadTimeout = React.useCallback(() => {
+    if (timeoutRef.current !== null) {
+      window.clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
   }, []);
+
+  const stop = React.useCallback(() => {
+    clearLoadTimeout();
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.pause();
+    audio.removeAttribute("src");
+    audio.load();
+    setIsLoading(false);
+    setIsPlaying(false);
+  }, [clearLoadTimeout]);
+
+  React.useEffect(() => {
+    const audio = new Audio();
+    audio.preload = "none";
+    audio.volume = volume;
+    audioRef.current = audio;
+
+    const onPlay = () => {
+      setIsPlaying(true);
+      setErrorMessage(null);
+    };
+    const onPause = () => setIsPlaying(false);
+    const onPlaying = () => {
+      clearLoadTimeout();
+      setIsLoading(false);
+      setIsPlaying(true);
+      setErrorMessage(null);
+    };
+    const onWaiting = () => setIsLoading(true);
+    const onError = () => {
+      clearLoadTimeout();
+      setIsLoading(false);
+      setIsPlaying(false);
+      setErrorMessage("Audio could not be fetched. Please try again later.");
+    };
+
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+    audio.addEventListener("playing", onPlaying);
+    audio.addEventListener("waiting", onWaiting);
+    audio.addEventListener("error", onError);
+    audio.addEventListener("stalled", onError);
+
+    return () => {
+      clearLoadTimeout();
+      audio.pause();
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("playing", onPlaying);
+      audio.removeEventListener("waiting", onWaiting);
+      audio.removeEventListener("error", onError);
+      audio.removeEventListener("stalled", onError);
+      audioRef.current = null;
+    };
+  }, [clearLoadTimeout, volume]);
+
+  const toggle = React.useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (!audio.paused) {
+      stop();
+      return;
+    }
+
+    setErrorMessage(null);
+    setIsLoading(true);
+    audio.src = `${STREAM_URL}?t=${Date.now()}`;
+
+    clearLoadTimeout();
+    timeoutRef.current = window.setTimeout(() => {
+      stop();
+      setErrorMessage("Audio could not be fetched. Please try again later.");
+    }, 15_000);
+
+    audio.play().catch(() => {
+      clearLoadTimeout();
+      setIsLoading(false);
+      setIsPlaying(false);
+      setErrorMessage("Audio could not be fetched. Please try again later.");
+    });
+  }, [clearLoadTimeout, stop]);
 
   const setVolume = React.useCallback((v: number) => {
     setVolumeState(v);
+    if (audioRef.current) audioRef.current.volume = v;
   }, []);
 
   return (
-    <Ctx.Provider value={{ isPlaying: false, isLoading: false, volume, toggle, setVolume }}>
+    <Ctx.Provider value={{ errorMessage, isPlaying, isLoading, volume, toggle, setVolume }}>
       {children}
     </Ctx.Provider>
   );
