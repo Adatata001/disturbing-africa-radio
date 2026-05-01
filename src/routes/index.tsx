@@ -297,40 +297,6 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-border bg-card/40">
-        <div className="mx-auto max-w-7xl px-4 py-20">
-          <div className="grid gap-10 lg:grid-cols-12">
-            <Reveal direction="left" className="lg:col-span-4">
-              <div className="text-xs font-bold uppercase tracking-widest text-secondary">
-                What we stand for
-              </div>
-              <h2 className="display mt-2 text-4xl font-black leading-[0.95] sm:text-5xl">
-                Ten rules.
-                <br />
-                <span className="text-primary">No compromises.</span>
-              </h2>
-              <p className="mt-4 max-w-md text-sm text-muted-foreground">
-                Our core values keep the signal pure - from selection to broadcast.
-              </p>
-            </Reveal>
-            <ul className="grid gap-3 sm:grid-cols-2 lg:col-span-8">
-              {VALUES.map((value, i) => (
-                <Reveal key={value} direction="right" delay={i * 60}>
-                  <li
-                    className="flex items-start gap-3 rounded-lg border border-border bg-background/40 p-4 transition-colors hover:border-primary/40"
-                  >
-                    <span className="display flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary text-sm font-black text-primary-foreground">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="pt-1.5 text-sm font-semibold text-foreground">{value}</span>
-                  </li>
-                </Reveal>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
       <section className="mx-auto max-w-7xl px-4 py-20">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <Reveal direction="left" className="relative overflow-hidden rounded-xl border border-border">
