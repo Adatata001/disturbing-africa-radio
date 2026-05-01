@@ -73,8 +73,8 @@ export const Route = createRootRoute({
       { name: "description", content: "Afro Fusion Live. Bold, underground, unfiltered. Listen live now" },
       { property: "og:description", content: "Afro Fusion Live. Bold, underground, unfiltered. Listen live now" },
       { name: "twitter:description", content: "Afro Fusion Live. Bold, underground, unfiltered. Listen live now" },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8922a791-f8b6-4e71-82d9-2141cc7d7b5c/id-preview-0c58d4e8--05c102b6-4af0-40a3-90d5-cfd9999940b2.lovable.app-1777587273263.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8922a791-f8b6-4e71-82d9-2141cc7d7b5c/id-preview-0c58d4e8--05c102b6-4af0-40a3-90d5-cfd9999940b2.lovable.app-1777587273263.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/uSaVpklgSaRnl0Dy1vo9rDQl4Ou2/social-images/social-1777627815602-ChatGPT_Image_Apr_30,_2026,_10_06_58_PM.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/uSaVpklgSaRnl0Dy1vo9rDQl4Ou2/social-images/social-1777627815602-ChatGPT_Image_Apr_30,_2026,_10_06_58_PM.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
